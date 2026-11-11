@@ -67,7 +67,7 @@
   } else {
     /* loading sequence: wait for the fonts (max 500 ms) so text never jumps */
     const lancerHero = () => hero.forEach(el => montrer(el, Number(el.dataset.d || 0)));
-    Promise.race([document.fonts?.ready ?? Promise.resolve(), new Promise(r => setTimeout(r, 500))])
+    Promise.race([document.fonts?.ready ?? Promise.resolve(), new Promise(r => setTimeout(r, 300))])
       .then(() => requestAnimationFrame(lancerHero));
 
     /* scroll reveals: once, ordered top-to-bottom then left-to-right, 80 ms apart, capped at 400 ms */

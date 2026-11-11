@@ -38,6 +38,8 @@ Vous avez besoin de Python 3 pour la prévisualisation et de Node.js 22 pour les
 
 Les chemins sont relatifs : vous pouvez servir le site à la racine d’un domaine ou dans un sous-dossier. Le dépôt contient aussi `.nojekyll` pour un hébergement statique sans traitement Jekyll. Le workflow GitHub Actions vérifie le site et sa génération à chaque push et pull request ; il ne publie pas le site.
 
+Pour les URL absolues (adresse canonique, image de partage, plan du site), la construction utilise la variable `SITE_URL` si elle est définie, sinon le domaine de production fourni par Vercel. Sans domaine, ces balises sont simplement omises.
+
 Pour Vercel, `vercel.json` sélectionne le préréglage « Other », exécute `npm run build` et publie `dist/`. Cette configuration remplace le dossier de sortie par défaut `public`. Importez le dépôt avec son répertoire racine ; les pushes sur la branche de production déclenchent le déploiement si l’intégration Git est activée.
 
 ## Modifier le contenu
@@ -51,7 +53,10 @@ Les fichiers principaux sont :
 | `styles.css` | Couleurs, typographie et mises en page responsive |
 | `script.js` | Menu mobile, visionneuse de photos, apparitions au défilement |
 | `assets/images/` | Versions WebP allégées et affiche de la vidéo |
-| `assets/fonts/` | Fraunces et Source Sans 3 auto-hébergées, avec leurs licences OFL |
+| `assets/fonts/` | Fraunces, Source Sans 3 et Great Vibes (« Véro » du logo) auto-hébergées et allégées, avec leurs licences OFL |
+| `404.html` | Page d’erreur aux couleurs de l’institut |
+| `vercel.json` | Construction, en-têtes de sécurité et de cache |
+| `docs/LANCEMENT.md` | Audit avant mise en ligne et liste de contrôle |
 | `docs/DIRECTION.md` | Direction visuelle : palette, typographie, principes de mise en page |
 | `assets/originals/` | Les huit photos JPG et la vidéo MP4 fournies, conservées sans modification |
 | `assets/originals/manifest.json` | Taille et empreinte SHA-256 de chaque original |

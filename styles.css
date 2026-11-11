@@ -1,19 +1,21 @@
 @charset "UTF-8";
 /* Véro Esthétique — bright, clean salon. See docs/DIRECTION.md and docs/AUDIT.md */
 
-@font-face { font-family: "Fraunces"; src: url("assets/fonts/fraunces-roman.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; }
-@font-face { font-family: "Fraunces"; src: url("assets/fonts/fraunces-italic.woff2") format("woff2"); font-weight: 300 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/fraunces-roman.woff2") format("woff2"); font-weight: 300 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/fraunces-italic.woff2") format("woff2"); font-weight: 400 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Vero Script"; src: url("assets/fonts/great-vibes-vero.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
 @font-face { font-family: "Source Sans 3"; src: url("assets/fonts/source-sans-3.woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; }
 
 :root {
   --fond: #fdfaf6;
   --blanc: #ffffff;
   --rose: #f4e3dc;
-  --rose-fonce: #b9786a;
-  --sauge: #5f7d63;
+  --rose-fonce: #9d5f50;
+  --or-rose: linear-gradient(135deg, #a96c57 0%, #d29c86 45%, #8f5745 100%);
+  --sauge: #4f6b53;
   --vert: #22382c;
   --texte: #393c38;
-  --doux: #6d716b;
+  --doux: #5f635d;
   --ligne: #e7ded4;
   --ligne-forte: #d6cabd;
 
@@ -87,9 +89,15 @@ p { text-wrap: pretty; }
 .entete { position: sticky; top: 0; z-index: 50; background: rgb(253 250 246 / .9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
 .entete.est-defile { border-bottom-color: var(--ligne); }
 .entete-inner { display: flex; align-items: center; gap: 2.5rem; height: var(--entete); padding: 0 var(--marge); max-width: calc(var(--largeur) + 2 * var(--marge) + 200px); margin: 0 auto; }
-.logo { display: inline-flex; align-items: baseline; gap: .5rem; text-decoration: none; color: var(--vert); }
-.logo-nom { font: italic 500 1.7rem/1 var(--titre); font-variation-settings: "opsz" 72, "SOFT" 100, "WONK" 1; letter-spacing: -.01em; }
-.logo-sous { font-size: .68rem; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--sauge); }
+.logo { display: inline-flex; align-items: center; gap: .45rem; text-decoration: none; color: var(--vert); }
+/* wordmark rebuilt from Véro's business card: script name, serif "Esthétique", spaced "Beauté" */
+.logo-script { font: 400 2.8rem/1 "Vero Script", var(--titre); padding: .12em .12em .04em .02em; margin: -.1em 0 -.08em; background: var(--or-rose); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.logo-bloc { display: grid; gap: .28rem; justify-items: center; line-height: 1; }
+.logo-serif { font: 500 1.02rem/1 var(--titre); font-variation-settings: "opsz" 36, "SOFT" 25; letter-spacing: .005em; color: #8a5443; }
+.logo-beaute { display: flex; align-items: center; gap: .35em; font: 600 .5rem/1 var(--corps); letter-spacing: .34em; text-transform: uppercase; color: var(--sauge); padding-left: .34em; }
+.logo-beaute::before, .logo-beaute::after { content: ""; width: .7em; height: 1px; background: currentColor; opacity: .7; }
+.pied .logo-script { font-size: 2.2rem; }
+.entete-retour { margin-left: auto; }
 .menu { display: flex; gap: 2rem; margin-left: auto; }
 .menu a { position: relative; text-decoration: none; font-size: .98rem; color: var(--texte); padding: .3rem 0; transition: color .2s; }
 .menu a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--rose-fonce); transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease); }
@@ -152,7 +160,8 @@ p { text-wrap: pretty; }
 .vero-texte h2 { margin-bottom: .4rem; }
 .vero-texte > p:not(.surtitre) { max-width: 30rem; }
 .signature { margin-top: .6rem; color: var(--doux); font-size: .95rem; }
-.signature em { display: block; margin-top: .1rem; font: italic 400 2.3rem/1.1 var(--titre); font-variation-settings: "opsz" 72, "SOFT" 100, "WONK" 1; color: var(--vert); }
+.signature em { display: inline-block; margin-top: .1rem; font: normal 400 3.2rem/1.1 "Vero Script", var(--titre); padding: 0 .15em .05em 0; background: var(--or-rose); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.signature { display: grid; justify-items: start; }
 .film { margin: 0; }
 .film-cadre { position: relative; aspect-ratio: 604 / 1074; overflow: hidden; border-radius: var(--r); background: var(--vert); }
 .film-cadre video { width: 100%; height: 100%; object-fit: cover; }

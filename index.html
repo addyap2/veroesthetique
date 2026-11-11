@@ -9,11 +9,17 @@
   <meta property="og:description" content="Soins du visage PHYT’S, soins du corps, épilations, regard et mains. Rendez-vous au 07 82 77 29 46.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Véro Esthétique">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- build:seo -->
   <title>Véro Esthétique — Institut de beauté</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/great-vibes-vero.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/images/accueil-960.webp" as="image" type="image/webp" imagesrcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" imagesizes="(max-width: 860px) 100vw, 55vw" fetchpriority="high">
+  <link rel="preload" href="assets/images/accueil-960.webp" as="image" type="image/webp" imagesrcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" imagesizes="(max-width: 860px) 100vw, 60vw" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="script.js" defer></script>
@@ -23,7 +29,7 @@
 
   <header class="entete" data-entete>
     <div class="entete-inner">
-      <a class="logo" href="#accueil" aria-label="Véro Esthétique, accueil"><span class="logo-nom">Véro</span><span class="logo-sous">Esthétique</span></a>
+      <a class="logo" href="#accueil"><span class="logo-script">Véro</span><span class="logo-bloc"><span class="logo-serif">Esthétique</span><span class="logo-beaute">Beauté</span></span><span class="sr-only">, retour à l’accueil</span></a>
       <nav class="menu" id="menu" aria-label="Navigation principale">
         <a href="#soins">La carte</a>
         <a href="#vero">Véro</a>
@@ -51,7 +57,7 @@
         </div>
       </div>
       <figure class="hero-photo revele" data-m="image" data-d="0" data-parallax="0.06">
-        <img src="assets/images/accueil-960.webp" srcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" sizes="(max-width: 860px) 100vw, 55vw" width="1440" height="959" alt="Véro, souriante, accueille à la porte de son institut, dans la lumière du soleil" fetchpriority="high">
+        <img src="assets/images/accueil-960.webp" srcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" sizes="(max-width: 860px) 100vw, 60vw" width="1440" height="959" alt="Véro, souriante, accueille à la porte de son institut, dans la lumière du soleil" fetchpriority="high">
         <figcaption>Véro, à la porte de l’institut</figcaption>
       </figure>
     </section>
@@ -99,7 +105,7 @@
           </div>
           <aside class="tableau revele">
             <a class="tableau-lien" href="assets/originals/1000164355.jpg" data-visionneuse data-legende="La carte des soins et des tarifs, affichée à l’institut.">
-              <img src="assets/images/carte-960.webp" srcset="assets/images/carte-480.webp 480w, assets/images/carte-960.webp 960w" sizes="(max-width: 860px) 100vw, 34vw" width="1440" height="959" alt="La carte des soins et des tarifs affichée à l’institut" loading="lazy">
+              <img src="assets/images/carte-960.webp" srcset="assets/images/carte-480.webp 480w, assets/images/carte-960.webp 960w" sizes="(max-width: 860px) 100vw, 420px" width="1440" height="959" alt="La carte des soins et des tarifs affichée à l’institut" loading="lazy">
               <span class="tableau-loupe">Agrandir la carte</span>
             </a>
             <p>Quelques tarifs extraits de la carte affichée à l’institut. Pour tous les prix, ou pour choisir un soin, Véro vous répond au téléphone.</p>
@@ -111,7 +117,7 @@
 
     <section class="section vero" id="vero" aria-labelledby="vero-titre">
       <div class="conteneur vero-grille">
-        <figure class="vero-portrait revele" data-m="image" data-parallax="0.05"><img src="assets/images/vero-portrait-960.webp" srcset="assets/images/vero-portrait-480.webp 480w, assets/images/vero-portrait-960.webp 960w" sizes="(max-width: 860px) 100vw, 40vw" width="1440" height="1451" alt="Portrait de Véro, souriante, un pinceau de maquillage à la main" loading="lazy"></figure>
+        <figure class="vero-portrait revele" data-m="image" data-parallax="0.05"><img src="assets/images/vero-portrait-960.webp" srcset="assets/images/vero-portrait-480.webp 480w, assets/images/vero-portrait-960.webp 960w" sizes="(max-width: 860px) 100vw, (max-width: 1100px) 45vw, 460px" width="1440" height="1451" alt="Portrait de Véro, souriante, un pinceau de maquillage à la main" loading="lazy"></figure>
         <div class="vero-texte">
           <p class="surtitre revele">Votre esthéticienne</p>
           <h2 id="vero-titre" class="revele" data-m="texte">Bonjour, <em>moi c’est Véro.</em></h2>
@@ -139,8 +145,8 @@
           <p class="revele">Des tons vert sauge, des matières naturelles et des petites attentions, pour un moment rien qu’à vous.</p>
         </header>
         <div class="galerie">
-          <a class="galerie-item g-cabine revele" data-m="image" data-parallax="0.04" href="assets/originals/1000164358.jpg" data-visionneuse data-legende="La cabine de soins."><img src="assets/images/cabine-960.webp" srcset="assets/images/cabine-480.webp 480w, assets/images/cabine-960.webp 960w, assets/images/cabine-1440.webp 1440w" sizes="(max-width: 860px) 100vw, 50vw" width="1440" height="1405" alt="La cabine de soins, avec sa table habillée d’une serviette PHYT’S" loading="lazy"><span>La cabine</span></a>
-          <a class="galerie-item g-details revele" data-m="image" data-parallax="0.04" href="assets/originals/1000164357.jpg" data-visionneuse data-legende="Les attentions de la table de soin."><img src="assets/images/details-960.webp" srcset="assets/images/details-480.webp 480w, assets/images/details-960.webp 960w" sizes="(max-width: 860px) 100vw, 50vw" width="1440" height="959" alt="Serviette PHYT’S, fleurs blanches et miroir à main en or rose" loading="lazy"><span>Les attentions</span></a>
+          <a class="galerie-item g-cabine revele" data-m="image" data-parallax="0.04" href="assets/originals/1000164358.jpg" data-visionneuse data-legende="La cabine de soins."><img src="assets/images/cabine-960.webp" srcset="assets/images/cabine-480.webp 480w, assets/images/cabine-960.webp 960w, assets/images/cabine-1440.webp 1440w" sizes="(max-width: 860px) 100vw, 600px" width="1440" height="1405" alt="La cabine de soins, avec sa table habillée d’une serviette PHYT’S" loading="lazy"><span>La cabine</span></a>
+          <a class="galerie-item g-details revele" data-m="image" data-parallax="0.04" href="assets/originals/1000164357.jpg" data-visionneuse data-legende="Les attentions de la table de soin."><img src="assets/images/details-960.webp" srcset="assets/images/details-480.webp 480w, assets/images/details-960.webp 960w" sizes="(max-width: 860px) 100vw, 600px" width="1440" height="959" alt="Serviette PHYT’S, fleurs blanches et miroir à main en or rose" loading="lazy"><span>Les attentions</span></a>
           <a class="galerie-item g-phyts revele" data-m="image" href="assets/originals/1000164360.jpg" data-visionneuse data-legende="Les soins PHYT’S, naturo-esthétiques."><img src="assets/images/phyts-480.webp" width="480" height="320" alt="Livret PHYT’S posé près d’un vase" loading="lazy"><span>PHYT’S</span></a>
           <a class="galerie-item g-pause revele" data-m="image" href="assets/originals/1000164356.jpg" data-visionneuse data-legende="Pendant votre soin, on ne vous dérange pas."><img src="assets/images/pause-480.webp" width="480" height="320" alt="Panneau « Soins en cours, merci de ne pas déranger »" loading="lazy"><span>Soins en cours</span></a>
         </div>
@@ -175,7 +181,7 @@
 
   <footer class="pied">
     <div class="conteneur pied-inner">
-      <a class="logo" href="#accueil" aria-label="Véro Esthétique, retour en haut"><span class="logo-nom">Véro</span><span class="logo-sous">Esthétique</span></a>
+      <a class="logo" href="#accueil"><span class="logo-script">Véro</span><span class="logo-bloc"><span class="logo-serif">Esthétique</span><span class="logo-beaute">Beauté</span></span><span class="sr-only">, retour en haut</span></a>
       <p>Votre beauté, vos envies, votre moment.</p>
       <p>© <span id="annee">2026</span> Véro Esthétique · <a href="confidentialite.html">Confidentialité</a></p>
     </div>
