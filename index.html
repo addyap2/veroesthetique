@@ -75,6 +75,12 @@
         </header>
         <div class="soins-grille">
           <div class="menu-soins">
+            <div class="onglets" role="tablist" aria-label="Catégories de soins" data-onglets hidden>
+            <button type="button" role="tab" id="t-visage" aria-controls="p-visage" aria-selected="true">Visage &amp; corps</button>
+            <button type="button" role="tab" id="t-epil" aria-controls="p-epil" aria-selected="false" tabindex="-1">Épilations</button>
+            <button type="button" role="tab" id="t-beaute" aria-controls="p-beaute" aria-selected="false" tabindex="-1">Regard &amp; beauté</button>
+            </div>
+            <div class="panneau-soins" role="tabpanel" id="p-visage" aria-labelledby="t-visage">
             <section class="famille revele" aria-labelledby="f-visage">
               <h3 id="f-visage">Soins visage <small>PHYT’S, cosmétique bio certifiée</small></h3>
               <ul class="prix">
@@ -97,23 +103,8 @@
                 <li><span>L’escapade zen <i>1 h</i></span><b>75&nbsp;€</b></li>
               </ul>
             </section>
-            <section class="famille revele" aria-labelledby="f-regard">
-              <h3 id="f-regard">L’élégance du regard <small>cils et sourcils</small></h3>
-              <ul class="prix">
-                <li><span>Rehaussement + teinture de cils <i>1 h</i></span><b>65&nbsp;€</b></li>
-                <li><span>Teinture de cils <i>30 min</i></span><b>24&nbsp;€</b></li>
-                <li><span>Teinture des sourcils <i>30 min</i></span><b>19&nbsp;€</b></li>
-              </ul>
-            </section>
-            <section class="famille revele" aria-labelledby="f-maquillage">
-              <h3 id="f-maquillage">L’art de sublimer <small>maquillage</small></h3>
-              <ul class="prix">
-                <li><span>Maquillage flash <i>10 min</i></span><b>15&nbsp;€</b></li>
-                <li><span>Maquillage jour <i>30 min</i></span><b>29&nbsp;€</b></li>
-                <li><span>Maquillage événement <i>45 min</i></span><b>40&nbsp;€</b></li>
-                <li><span>Maquillage mariée + essai <i>sur demande</i></span><b>110&nbsp;€</b></li>
-              </ul>
-            </section>
+            </div>
+            <div class="panneau-soins" role="tabpanel" id="p-epil" aria-labelledby="t-epil">
             <section class="famille revele" aria-labelledby="f-epil-visage">
               <h3 id="f-epil-visage">Épilations visage</h3>
               <ul class="prix">
@@ -167,6 +158,25 @@
                 <li><span>Nez ou oreilles <i>10 min</i></span><b>7&nbsp;€</b></li>
               </ul>
             </section>
+            </div>
+            <div class="panneau-soins" role="tabpanel" id="p-beaute" aria-labelledby="t-beaute">
+            <section class="famille revele" aria-labelledby="f-regard">
+              <h3 id="f-regard">L’élégance du regard <small>cils et sourcils</small></h3>
+              <ul class="prix">
+                <li><span>Rehaussement + teinture de cils <i>1 h</i></span><b>65&nbsp;€</b></li>
+                <li><span>Teinture de cils <i>30 min</i></span><b>24&nbsp;€</b></li>
+                <li><span>Teinture des sourcils <i>30 min</i></span><b>19&nbsp;€</b></li>
+              </ul>
+            </section>
+            <section class="famille revele" aria-labelledby="f-maquillage">
+              <h3 id="f-maquillage">L’art de sublimer <small>maquillage</small></h3>
+              <ul class="prix">
+                <li><span>Maquillage flash <i>10 min</i></span><b>15&nbsp;€</b></li>
+                <li><span>Maquillage jour <i>30 min</i></span><b>29&nbsp;€</b></li>
+                <li><span>Maquillage événement <i>45 min</i></span><b>40&nbsp;€</b></li>
+                <li><span>Maquillage mariée + essai <i>sur demande</i></span><b>110&nbsp;€</b></li>
+              </ul>
+            </section>
             <section class="famille revele" aria-labelledby="f-mains">
               <h3 id="f-mains">Mains &amp; pieds</h3>
               <ul class="prix">
@@ -174,6 +184,7 @@
                 <li><span>Beauté des pieds <i>40 min</i></span><b>35&nbsp;€</b></li>
               </ul>
             </section>
+            </div>
           </div>
           <aside class="tableau revele">
             <a class="tableau-lien" href="assets/originals/1000164355.jpg" data-visionneuse data-legende="La carte des soins et des tarifs, affichée à l’institut.">
@@ -242,7 +253,7 @@
             </ul>
           </div>
         </header>
-        <div class="avis-grille">
+        <div class="avis-grille" role="region" aria-label="Avis clients" tabindex="0">
           <figure class="avis-carte revele">
             <p class="avis-etoiles" aria-label="5 sur 5">★★★★★</p>
             <blockquote><p>Accueil chaleureux locaux propre ambiance cocooning produit de très bonne qualité (ma peau est sensible et réactive) Le soin en lui même est un appel à la détente et à la relaxation. AU TOP!!!</p></blockquote>
@@ -274,6 +285,7 @@
             <figcaption>Avis client sur Planity · <time datetime="2026-11-03">3 novembre 2026</time></figcaption>
           </figure>
         </div>
+        <p class="avis-glisser" aria-hidden="true">Faites glisser pour lire les autres avis →</p>
         <p class="avis-pied revele"><a class="lien" href="https://www.planity.com/vero-esthetique-beaute-83600-frejus">Lire tous les avis et réserver sur Planity</a></p>
       </div>
     </section>

@@ -123,6 +123,35 @@
     cibles.forEach(c => navObserver.observe(c));
   }
 
+  /* price list tabs (all categories stay visible without JavaScript) */
+  const onglets = document.querySelector('[data-onglets]');
+  if (onglets) {
+    const tabs = [...onglets.querySelectorAll('[role="tab"]')];
+    const choisir = (tab, focus) => {
+      tabs.forEach(t => {
+        const actif = t === tab;
+        t.setAttribute('aria-selected', String(actif));
+        t.tabIndex = actif ? 0 : -1;
+        const panneau = document.getElementById(t.getAttribute('aria-controls'));
+        panneau.hidden = !actif;
+        if (actif) {
+          panneau.querySelectorAll('.revele').forEach(el => el.classList.add('est-visible'));
+          panneau.classList.remove('est-entree'); void panneau.offsetWidth; if (!reduit) panneau.classList.add('est-entree');
+        }
+      });
+      if (focus) tab.focus();
+    };
+    onglets.hidden = false;
+    choisir(tabs[0], false);
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => choisir(tab, false));
+      tab.addEventListener('keydown', e => {
+        const cible = { ArrowRight: tabs[(i + 1) % tabs.length], ArrowLeft: tabs[(i - 1 + tabs.length) % tabs.length], Home: tabs[0], End: tabs[tabs.length - 1] }[e.key];
+        if (cible) { e.preventDefault(); choisir(cible, true); }
+      });
+    });
+  }
+
   /* film: silent preview loop → full film with sound and captions → end screen with booking */
   const film = document.querySelector('[data-film]');
   if (film) {
