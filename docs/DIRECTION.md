@@ -91,3 +91,88 @@ dissolves) → being looked after (the room, the person) → choosing (the card)
 - No invented facts: no address, hours, or prices beyond the institute's card.
 - No trackers, cookies or third-party requests. Fonts are self-hosted.
 - Booking stays phone and SMS only.
+
+---
+
+## Hero: « La porte entrouverte »
+
+### Central visual concept
+
+The first frame shows a **closed sage-green door in a dark wall, with a single
+thread of golden light along its edge**. Within a second the door swings open
+towards you in real 3D, and late-afternoon sun pours out across the wall and
+floor. Standing in the light is Véro, opening her door to you (the real
+photograph). The brand promise needs no words: *someone is waiting for you on
+the other side, and it is warm in there.*
+
+Scroll, and you walk through. The door opens all the way, the doorway grows
+towards you, the light overexposes to linen white, and you arrive in the
+next scene, where the outside world dissolves. The hero is the first beat of
+the hour, not a banner on top of it.
+
+### Composition
+
+- Desktop: an asymmetric split. Text sits on the left ~half of the wall; the
+  doorway stands on the right third, tall and narrow (about 3:5), on a
+  floor line that runs the width of the screen. The door is hinged on the
+  left, so as it opens it swings *towards the text*, framing it.
+- Mobile: doorway first (the image is the hook), copy and CTA below,
+  everything above the fold on a 375×812 screen.
+
+### Value, headline, subheadline, CTA
+
+- Eyebrow: **Institut de beauté · Soins PHYT’S**
+- Headline: **Le monde *peut attendre.*** (the brand line; the emotion)
+- Subheadline: **Soins du visage PHYT’S, escapades corps, épilations, beauté du
+  regard et des mains. Chez Véro, une heure rien qu’à vous.** (the offer,
+  stated plainly within the first read)
+- Primary CTA: a real button, **Réserver mon heure | 07 82 77 29 46**. The
+  number is visible, because for a local institute the phone number *is* the
+  conversion.
+- Secondary: **Découvrir la carte ↓** for visitors not ready to call.
+- Reassurance: *Rendez-vous pris directement avec Véro, par téléphone ou SMS.*
+
+### 3D, light, texture
+
+- The door is a CSS 3D plane (no WebGL, no library): painted sage panel,
+  two raised mouldings, a rose-gold handle, and a real edge thickness that
+  catches the light as it turns.
+- Light is the protagonist: the crack of light before opening, a warm glow
+  on the wall that grows with the opening angle, a trapezoid of sun on the
+  floor, dust motes drifting in the beam (a 40-particle canvas, paused
+  off-screen).
+- Textures: fine plaster grain on the wall, faint wood grain on the door,
+  film grain over all.
+
+### Entrance (≈1.8 s, never blocks reading)
+
+1. 0 s: dark wall, closed door, the crack of light pulsing once.
+2. 0.15 s: eyebrow and headline come into focus (blur → sharp).
+3. 0.45 s: the door swings open (1.8 s, decelerating, no bounce); light rises
+   on the wall and floor at the same rate.
+4. 0.9 s: subheadline, CTA and reassurance come into focus.
+
+The headline is readable within the first second; the CTA within ~1.5 s.
+
+### Interactive details
+
+- Pointer (desktop): the door breathes a few degrees with the cursor, and
+  the doorway tilts subtly in 3D, as if you lean to look inside. Text drifts
+  the opposite way for depth.
+- Hovering the doorway opens the door a little wider, an invitation.
+- The CTA splits in two (label | number); on hover the number warms and the
+  button lifts into the light.
+
+### Scroll behaviour
+
+The hero is a 175 svh pinned scene. Progress 0 → 1: text lifts and blurs
+away; the door opens to ~100°; the doorway scales towards the viewer; the
+frame overexposes to linen, which is exactly the colour of the next scene.
+No cut, no hard edge.
+
+### Speed and usability
+
+- One image (the existing 1440/960/480 WebP set) and pure CSS geometry.
+- Motion only on `transform`, `opacity` and `filter` of small layers.
+- `prefers-reduced-motion`: the door rests open at its final angle, no
+  scroll-through, no motes. Without JavaScript the door is drawn open.

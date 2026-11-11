@@ -12,7 +12,7 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   /* ---------- opening: light comes up once the hero photo is ready ---------- */
-  const heroPhoto = document.querySelector('.porte-photo');
+  const heroPhoto = document.querySelector('.seuil-photo');
   const ready = () => requestAnimationFrame(() => requestAnimationFrame(() => body.classList.add('is-ready')));
   if (!heroPhoto || heroPhoto.complete) ready();
   else {
@@ -65,6 +65,7 @@
     for (const el of toned) {
       const r = el.getBoundingClientRect();
       if (r.top <= y && r.bottom > y) {
+        if (el.hasAttribute('data-porte')) return porteScroll > 0.72 ? 'light' : 'dark';
         if (el.dataset.tone === 'scene') return Number(el.style.getPropertyValue('--e') || 0) > 0.55 ? 'dark' : 'light';
         return el.dataset.tone === 'dark' ? 'dark' : 'light';
       }
@@ -73,6 +74,7 @@
   };
 
   let lastMinute = -1;
+  let porteScroll = 0;
   let ticking = false;
 
   const update = () => {
@@ -88,7 +90,10 @@
         scene.style.setProperty('--p', p.toFixed(4));
         scene.style.setProperty('--e', easeInOut(clamp(p / 0.8)).toFixed(4));
       }
-      if (porte) porte.style.setProperty('--s', clamp(y / vh).toFixed(4));
+      if (porte) {
+        const pr = porte.getBoundingClientRect();
+        porteScroll = clamp(-pr.top / Math.max(1, pr.height - vh));
+      }
       for (const el of drifters) {
         const r = el.getBoundingClientRect();
         if (r.bottom < 0 || r.top > vh) continue;
@@ -139,6 +144,74 @@
   reduced.addEventListener?.('change', () => location.reload());
   measure();
   update();
+
+  /* ---------- the hero door: intro swing, pointer, scroll-through ---------- */
+  if (porte && !reduced.matches) {
+    const seuil = porte.querySelector('[data-seuil]');
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const easeOut = t => 1 - Math.pow(1 - t, 4);
+    let t0 = 0, tx = 0, ty = 0, cx = 0, cy = 0, hover = 0, ch = 0, s = 0, running = false, visible = true;
+
+    porte.addEventListener('pointermove', e => {
+      if (!fine.matches) return;
+      tx = e.clientX / window.innerWidth - .5;
+      ty = e.clientY / window.innerHeight - .5;
+    });
+    porte.addEventListener('pointerleave', () => { tx = 0; ty = 0; });
+    seuil.addEventListener('pointerenter', () => { if (fine.matches) hover = 1; });
+    seuil.addEventListener('pointerleave', () => { hover = 0; });
+
+    const frame = now => {
+      if (!t0) t0 = now;
+      const intro = easeOut(clamp((now - t0 - 450) / 1800));
+      cx += (tx - cx) * .06; cy += (ty - cy) * .06; ch += (hover - ch) * .08;
+      s += (porteScroll - s) * .2;
+      const angle = 2 + intro * 66 + ch * 8 + s * 40 + cx * 10 * intro;
+      porte.style.setProperty('--angle', angle.toFixed(2) + 'deg');
+      porte.style.setProperty('--open', clamp(angle / 100).toFixed(3));
+      porte.style.setProperty('--s', s.toFixed(4));
+      porte.style.setProperty('--tx', cx.toFixed(4));
+      porte.style.setProperty('--ty', cy.toFixed(4));
+      if (visible) requestAnimationFrame(frame); else running = false;
+    };
+    const start = () => { if (!running) { running = true; requestAnimationFrame(frame); } };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (visible && body.classList.contains('is-ready')) start(); }).observe(porte);
+    }
+    const waitReady = () => body.classList.contains('is-ready') ? start() : requestAnimationFrame(waitReady);
+    waitReady();
+
+    /* dust motes drifting in the sunlit doorway */
+    const canvas = porte.querySelector('.poussiere');
+    const ctx = canvas?.getContext('2d');
+    if (ctx) {
+      const motes = Array.from({ length: 42 }, () => ({ x: Math.random(), y: Math.random(), r: .4 + Math.random() * 1.6, v: .00008 + Math.random() * .00022, a: Math.random() * Math.PI * 2, w: .3 + Math.random() * .7 }));
+      let w = 0, h = 0;
+      const size = () => {
+        const dpr = Math.min(2, window.devicePixelRatio || 1);
+        w = canvas.clientWidth; h = canvas.clientHeight;
+        canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      };
+      size(); window.addEventListener('resize', size);
+      let last = 0;
+      const dust = now => {
+        const dt = Math.min(64, now - (last || now)); last = now;
+        ctx.clearRect(0, 0, w, h);
+        for (const m of motes) {
+          m.y -= m.v * dt; m.a += dt * .0006; m.x += Math.sin(m.a) * .00012 * dt;
+          if (m.y < -.02) { m.y = 1.02; m.x = Math.random(); }
+          const flicker = .45 + .55 * Math.sin(m.a * 2.3 + m.w * 9);
+          ctx.globalAlpha = .55 * m.w * flicker;
+          ctx.fillStyle = '#fff1d6';
+          ctx.beginPath(); ctx.arc(m.x * w, m.y * h, m.r, 0, Math.PI * 2); ctx.fill();
+        }
+        if (visible) requestAnimationFrame(dust); else last = 0, requestAnimationFrame(wake);
+      };
+      const wake = () => visible ? requestAnimationFrame(dust) : setTimeout(() => requestAnimationFrame(wake), 400);
+      requestAnimationFrame(dust);
+    }
+  }
 
   /* ---------- the mirror film ---------- */
   const film = document.querySelector('[data-film]');

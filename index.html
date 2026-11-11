@@ -13,7 +13,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/images/accueil-1440.webp" as="image" type="image/webp" imagesrcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" href="assets/images/accueil-960.webp" as="image" type="image/webp" imagesrcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" imagesizes="(max-width: 900px) 120vw, 60vw" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="script.js" defer></script>
@@ -39,24 +39,41 @@
   <main id="contenu">
 
     <!-- 00′ La porte -->
-    <section class="porte" data-tone="dark" id="accueil" data-chapter="La porte" data-minute="0" aria-labelledby="porte-titre">
-      <div class="porte-media">
-        <img class="porte-photo" src="assets/images/accueil-1440.webp" srcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" sizes="100vw" width="1440" height="959" alt="Véro, souriante, ouvre la porte de son institut dans la lumière de fin d’après-midi" fetchpriority="high">
-        <img class="palme palme-porte" src="assets/images/palme.svg" alt="" aria-hidden="true">
-        <span class="porte-veil" aria-hidden="true"></span>
-      </div>
-      <div class="porte-text">
-        <p class="label porte-label" data-in="1">Véro Esthétique<span class="porte-label-suite"> <span aria-hidden="true">—</span> institut de beauté</span></p>
-        <h1 id="porte-titre" class="porte-titre">
-          <span class="ligne" data-in="2">Le monde</span>
-          <span class="ligne ligne-decale" data-in="3"><em>peut attendre.</em></span>
-        </h1>
-        <div class="porte-pied" data-in="4">
-          <p>Une porte qui s’ouvre, un sourire,<br>et une heure rien qu’à vous.</p>
-          <a class="appel" href="tel:+33782772946"><span class="appel-texte">Réserver mon heure</span><span class="appel-num">07 82 77 29 46</span></a>
+    <section class="porte" data-tone="dark" id="accueil" data-chapter="La porte" data-minute="0" aria-labelledby="porte-titre" data-porte>
+      <div class="porte-stage">
+        <div class="porte-texte">
+          <p class="label porte-label" data-in="1">Institut de beauté <span aria-hidden="true">·</span> Soins PHYT’S</p>
+          <h1 id="porte-titre" class="porte-titre">
+            <span class="ligne" data-in="2">Le monde</span>
+            <span class="ligne ligne-decale" data-in="3"><em>peut attendre.</em></span>
+          </h1>
+          <p class="porte-sous" data-in="4">Soins du visage PHYT’S, escapades corps, épilations, beauté du regard et des mains. Chez Véro, une heure rien qu’à vous.</p>
+          <div class="porte-cta" data-in="5">
+            <a class="bouton" href="tel:+33782772946"><span class="bouton-texte">Réserver mon heure</span><span class="bouton-num">07 82 77 29 46</span></a>
+            <a class="lien lien-clair" href="#soins">Découvrir la carte <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="porte-confiance" data-in="6">Rendez-vous pris directement avec Véro, par téléphone ou SMS.</p>
         </div>
+
+        <div class="seuil" data-seuil>
+          <span class="seuil-mur" aria-hidden="true"></span>
+          <span class="seuil-sol" aria-hidden="true"></span>
+          <div class="seuil-cadre">
+            <div class="seuil-dedans">
+              <img class="seuil-photo" src="assets/images/accueil-960.webp" srcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" sizes="(max-width: 900px) 120vw, 60vw" width="1440" height="959" alt="Véro, souriante, ouvre la porte de son institut dans la lumière de fin d’après-midi" fetchpriority="high">
+              <canvas class="poussiere" aria-hidden="true"></canvas>
+            </div>
+            <div class="battant" aria-hidden="true">
+              <div class="battant-face"><span class="moulure moulure-haut"></span><span class="moulure moulure-bas"></span><span class="poignee"></span></div>
+              <div class="battant-chant"></div>
+            </div>
+            <span class="seuil-fente" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <span class="porte-blanc" aria-hidden="true"></span>
+        <a class="entrer" href="#panneau" data-in="6"><span>Entrer</span><i aria-hidden="true"></i></a>
       </div>
-      <a class="entrer" href="#panneau" data-in="5"><span>Entrer</span><i aria-hidden="true"></i></a>
     </section>
 
     <!-- 05′ Le panneau -->
