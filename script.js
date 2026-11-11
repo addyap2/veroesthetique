@@ -123,6 +123,18 @@
     cibles.forEach(c => navObserver.observe(c));
   }
 
+  /* monthly offer: shown only until its end date; video loops silently while visible */
+  const offre = document.querySelector('[data-offre]');
+  if (offre && Date.now() <= Date.parse(offre.dataset.fin)) {
+    offre.hidden = false;
+    const v = offre.querySelector('[data-offre-video]');
+    if (v && !reduit && !navigator.connection?.saveData && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
+      }, { threshold: 0.4 }).observe(v);
+    }
+  }
+
   /* price list tabs (all categories stay visible without JavaScript) */
   const onglets = document.querySelector('[data-onglets]');
   if (onglets) {

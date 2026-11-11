@@ -138,6 +138,18 @@ p { text-wrap: pretty; }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 54% 38%; filter: saturate(1.04) contrast(1.02); }
 .hero-photo figcaption { position: absolute; left: 1.4rem; bottom: 1.2rem; padding: .35rem .7rem; background: rgb(253 250 246 / .88); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-size: .82rem; color: var(--vert); border-radius: 2px; }
 
+/* ---------- offre du mois (auto-hidden after its end date) ---------- */
+.offre { background: var(--vert); color: rgb(255 255 255 / .85); padding: clamp(48px, 7vw, 88px) 0; }
+.offre[hidden] { display: none; }
+.offre-grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.offre .surtitre { color: #e8c9b9; }
+.offre h2 { color: #fff; font-size: clamp(2.1rem, 4.2vw, 3.4rem); margin-bottom: 1rem; }
+.offre h2 em { color: var(--rose); }
+.offre-texte > p:not(.surtitre) { max-width: 30rem; margin-bottom: 1.6rem; }
+.offre-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.8rem; }
+.offre-video { margin: 0; border-radius: var(--r); overflow: hidden; background: #000; aspect-ratio: 852 / 478; }
+.offre-video video { width: 100%; height: 100%; object-fit: cover; }
+
 /* ---------- la carte (menu) ---------- */
 .soins { border-top: 1px solid var(--ligne); }
 .soins-tete { margin-bottom: clamp(40px, 6vw, 72px); }
@@ -242,6 +254,15 @@ p { text-wrap: pretty; }
 .hero-preuve a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--ligne-forte); transition: border-color .2s; }
 .hero-preuve a:hover { border-bottom-color: var(--rose-fonce); }
 
+/* ---------- citation ---------- */
+.citation { padding: clamp(64px, 9vw, 112px) 0; border-top: 1px solid var(--ligne); }
+.citation-inner { margin-inline: auto; text-align: center; max-width: 54rem; }
+.citation blockquote { margin: 0; }
+.citation blockquote p { font: 400 clamp(1.7rem, 3.4vw, 2.7rem)/1.3 var(--titre); font-variation-settings: "opsz" 72, "SOFT" 30; color: var(--vert); text-wrap: balance; }
+.citation em { font-style: italic; color: var(--rose-fonce); font-variation-settings: "opsz" 72, "SOFT" 90, "WONK" 1; }
+.citation figcaption { margin-top: 1.2rem; font-size: .9rem; color: var(--doux); letter-spacing: .02em; }
+.citation figcaption span { color: var(--rose-fonce); margin-right: .4rem; }
+
 /* ---------- l'institut ---------- */
 .institut-tete { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem clamp(32px, 5vw, 80px); align-items: end; margin-bottom: clamp(36px, 5vw, 56px); }
 .institut-tete p { max-width: 30rem; color: var(--doux); justify-self: end; }
@@ -252,7 +273,7 @@ p { text-wrap: pretty; }
 .galerie-item span { position: absolute; left: .8rem; bottom: .8rem; padding: .3rem .65rem; background: rgb(253 250 246 / .92); color: var(--vert); font-size: .82rem; border-radius: 2px; opacity: 0; transform: translateY(6px); transition: opacity var(--t-court) var(--glisse), transform var(--t-court) var(--glisse); }
 .galerie-item:hover span, .galerie-item:focus-visible span { opacity: 1; transform: none; }
 .g-cabine { grid-column: 1 / span 2; grid-row: 1 / span 2; }
-.g-cabine { --base: 1.2; }
+.g-cabine { --base: 1.08; }
 .g-cabine img { object-position: 50% 56%; }
 .g-details { grid-column: 3 / span 2; }
 
@@ -275,7 +296,13 @@ p { text-wrap: pretty; }
 
 /* ---------- infos pratiques ---------- */
 .infos { border-top: 1px solid var(--ligne); padding-bottom: clamp(64px, 8vw, 104px); }
-.infos-grille { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.infos-grille { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.infos-photo { margin: 0; }
+.infos-photo img { display: block; }
+.infos-photo { overflow: hidden; border-radius: var(--r); }
+.infos-photo figcaption { overflow: visible; }
+.infos-photo img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r); }
+.infos-photo figcaption { margin-top: .6rem; font-size: .88rem; color: var(--doux); }
 .infos h2 { font-size: clamp(2.3rem, 4.6vw, 3.8rem); margin-bottom: 1.6rem; }
 .infos h3 { font-size: 1.6rem; margin-bottom: 1rem; }
 .infos address { font-style: normal; font-size: 1.15rem; line-height: 1.6; color: var(--vert); margin-bottom: 1rem; }
@@ -400,7 +427,8 @@ p { text-wrap: pretty; }
   .hero-preuve { order: 6; }
   .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(34 56 44 / .6), rgb(34 56 44 / 0) 38%); pointer-events: none; }
   .hero-intro { margin-bottom: 1.6rem; }
-  .soins-grille, .faq-grille, .institut-tete, .infos-grille, .avis-tete { grid-template-columns: 1fr; }
+  .soins-grille, .faq-grille, .institut-tete, .infos-grille, .avis-tete, .offre-grille { grid-template-columns: 1fr; }
+  .infos-photo { max-width: 420px; }
   .maps { aspect-ratio: 4 / 5; }
   .institut-tete p { justify-self: start; }
   .tableau { position: static; }
