@@ -51,6 +51,7 @@ Les fichiers principaux sont :
 | `styles.css` | Couleurs, typographie et mises en page responsive |
 | `script.js` | Menu mobile, visionneuse de photos et année du pied de page |
 | `assets/images/` | Versions WebP allégées et affiche de la vidéo |
+| `assets/fonts/` | Bodoni Moda et Source Sans 3 auto-hébergées, avec leurs licences OFL |
 | `assets/originals/` | Les huit photos JPG et la vidéo MP4 fournies, conservées sans modification |
 | `assets/originals/manifest.json` | Taille et empreinte SHA-256 de chaque original |
 
