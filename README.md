@@ -4,7 +4,7 @@ Ce dépôt permet de prévisualiser, modifier et déployer le site vitrine fran�
 
 ## Prévisualiser le site
 
-Vous avez besoin de Python 3 pour la prévisualisation et de Node.js 22 ou ultérieur pour les contrôles et la génération du dossier de déploiement.
+Vous avez besoin de Python 3 pour la prévisualisation et de Node.js 22 pour les contrôles et la génération du dossier de déploiement.
 
 1. Depuis la racine du dépôt, démarrez un serveur local :
 
@@ -37,6 +37,8 @@ Vous avez besoin de Python 3 pour la prévisualisation et de Node.js 22 ou ulté
 4. Vérifiez sur l’URL publique les photos, la vidéo, le menu mobile et les liens téléphone/SMS.
 
 Les chemins sont relatifs : vous pouvez servir le site à la racine d’un domaine ou dans un sous-dossier. Le dépôt contient aussi `.nojekyll` pour un hébergement statique sans traitement Jekyll. Le workflow GitHub Actions vérifie le site et sa génération à chaque push et pull request ; il ne publie pas le site.
+
+Pour Vercel, `vercel.json` sélectionne le préréglage « Other », exécute `npm run build` et publie `dist/`. Cette configuration remplace le dossier de sortie par défaut `public`. Importez le dépôt avec son répertoire racine ; les pushes sur la branche de production déclenchent le déploiement si l’intégration Git est activée.
 
 ## Modifier le contenu
 
