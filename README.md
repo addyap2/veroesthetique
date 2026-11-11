@@ -46,14 +46,13 @@ Les fichiers principaux sont :
 
 | Fichier | Contenu |
 | --- | --- |
-| `index.html` | Accueil, soins, tarifs sélectionnés, Véro, galerie, vidéo, FAQ et contact |
+| `index.html` | Accueil, soins et tarifs, Véro, l’institut (photos et vidéo), questions et contact |
 | `confidentialite.html` | Fonctionnement du site et confidentialité |
 | `styles.css` | Couleurs, typographie et mises en page responsive |
-| `script.js` | Horloge « Soins en cours », scènes liées au défilement, film, visionneuse de la carte |
+| `script.js` | Menu mobile, visionneuse de photos, apparitions au défilement |
 | `assets/images/` | Versions WebP allégées et affiche de la vidéo |
 | `assets/fonts/` | Fraunces et Source Sans 3 auto-hébergées, avec leurs licences OFL |
-| `assets/images/palme.svg` | Ombre de palme générée pour l’atmosphère lumineuse |
-| `docs/DIRECTION.md` | Direction créative « Soins en cours » : récit, palette, typographie, mouvement |
+| `docs/DIRECTION.md` | Direction visuelle : palette, typographie, principes de mise en page |
 | `assets/originals/` | Les huit photos JPG et la vidéo MP4 fournies, conservées sans modification |
 | `assets/originals/manifest.json` | Taille et empreinte SHA-256 de chaque original |
 
