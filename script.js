@@ -134,6 +134,21 @@
     });
   }
 
+  /* Google Maps: loaded only on request (no third-party request before the click) */
+  const maps = document.querySelector('[data-maps]');
+  if (maps) {
+    maps.querySelector('[data-maps-charger]').addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = maps.dataset.src;
+      iframe.title = 'Carte Google Maps : Véro Esthétique Beauté, 608 avenue de Lattre de Tassigny, Fréjus';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.allowFullscreen = true;
+      maps.querySelector('.maps-accueil').remove();
+      maps.appendChild(iframe);
+      iframe.focus();
+    });
+  }
+
   /* photo viewer */
   const dialog = document.getElementById('visionneuse');
   if (dialog && typeof dialog.showModal === 'function') {

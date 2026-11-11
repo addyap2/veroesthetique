@@ -39,10 +39,11 @@ the cream page behind it, which never happens on screen. Real contrast is fine.
 | --- | --- | --- | --- | --- |
 | A | **Video has sound but no captions or transcript** | Deaf and hard-of-hearing visitors miss it; people watching muted too | High | Get the words from Véro (or listen once), add a WebVTT `<track>` or a short transcript under the video. |
 | B | **Business card spells "Esthêtique"** (ê) | Typo on her printed material; also visible in the share image | Medium | Tell Véro; the site itself uses the correct "Esthétique". Replace `assets/images/partage.jpg` if she gets a corrected file. |
-| C | **No address, area or opening hours** | Biggest conversion and local-SEO gap: people want to know where and when | High | Get them from Véro, add to contact section, JSON-LD (`address`, `openingHoursSpecification`) and the page title (e.g. "… à [ville]"). |
+| C | ~~No address, area or opening hours~~ | Resolved from her Planity page: address, access, parking, hours, full price list, online booking, Instagram, click-to-load Google Maps | Done | Ask Véro to confirm prices periodically (they're copied from Planity). |
 | D | **Legal notice (mentions légales)** | Required in France for a business site | High | Operator identity, SIRET, host (Vercel Inc., address). Add a page and link it in the footer. |
 | E | **Photo and video rights** | Public use of the provided media | Medium | Written OK from Véro. |
 | F | **Analytics** | No way to know if calls come from the site | Low | Optional. If wanted: cookieless analytics (e.g. Vercel Web Analytics), track `tel:`/`sms:` clicks, update the privacy page and CSP. |
+| H | **GitHub repo homepage points to `veroesthetique.vercel.app`**, which doesn't exist | Wrong link for anyone visiting the repo | Low | The live site is `https://veroesthetique-phi.vercel.app`. Update the repo's website field, or attach a custom domain. |
 | G | **Image widths** | Some 960px images shown at ~600px on desktop (≈100 KB) | Low | Add 720px WebP variants if desired. |
 
 ## Launch checklist

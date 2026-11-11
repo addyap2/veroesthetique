@@ -6,7 +6,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolve(root, 'dist');
 await rm(output, { recursive: true, force: true });
 await mkdir(output);
-for (const file of ['index.html', 'confidentialite.html', '404.html', 'styles.css', 'script.js', 'assets', '.nojekyll']) {
+for (const file of ['index.html', 'confidentialite.html', '404.html', 'favicon.ico', 'styles.css', 'script.js', 'assets', '.nojekyll']) {
   await cp(resolve(root, file), resolve(output, file), { recursive: true });
 }
 
@@ -26,15 +26,20 @@ for (const [page, chemin] of Object.entries(pages)) {
       const schema = {
         '@context': 'https://schema.org',
         '@type': 'BeautySalon',
-        name: 'Véro Esthétique',
+        name: 'Véro Esthétique Beauté',
         slogan: 'Votre beauté, vos envies, votre moment.',
-        description: 'Institut de beauté : soins du visage PHYT’S, soins du corps, épilations, beauté du regard, des mains et des pieds.',
+        description: 'Institut de beauté à Fréjus : soins du visage PHYT’S, massages, épilations, cils, maquillage, beauté des mains et des pieds.',
         telephone: '+33782772946',
+        priceRange: '€€',
+        address: { '@type': 'PostalAddress', streetAddress: '608 avenue de Lattre de Tassigny', postalCode: '83600', addressLocality: 'Fréjus', addressCountry: 'FR' },
+        geo: { '@type': 'GeoCoordinates', latitude: 43.4317889, longitude: 6.750117 },
+        openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '19:30' }],
+        sameAs: ['https://www.planity.com/vero-esthetique-beaute-83600-frejus', 'https://www.instagram.com/veroesthetiquebeaute/'],
         url: `${site}/`,
         image: `${site}/assets/images/partage.jpg`,
         logo: `${site}/assets/apple-touch-icon.png`
       };
-      seo += `\n  <meta property="og:image" content="${site}/assets/images/partage.jpg">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <meta property="og:image:alt" content="Carte de visite Véro Esthétique : 07 82 77 29 46, votre beauté, vos envies, votre moment.">\n  <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+      seo += `\n  <meta property="og:image" content="${site}/assets/images/partage.jpg">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <meta property="og:image:alt" content="Carte de visite Véro Esthétique Beauté : 07 82 77 29 46, votre beauté, vos envies, votre moment.">\n  <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
     }
   }
   html = html.replace('<!-- build:seo -->', seo);

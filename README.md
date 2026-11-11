@@ -68,7 +68,7 @@ Le numéro `07 82 77 29 46` et la signature « Votre beauté, vos envies, votre 
 Le dépôt est prêt pour un déploiement technique. Les éléments fournis ne permettent pas de confirmer tous les renseignements pratiques et administratifs. Vérifiez les points suivants avec Véro :
 
 - Confirmer les tarifs, les prestations et le numéro de téléphone.
-- Fournir une adresse lisible et validée, les indications d’accès et les horaires si vous souhaitez les afficher. Aucune adresse ou aucun horaire n’a été inventé.
+- L’adresse, l’accès, les horaires, les tarifs et la réservation en ligne proviennent de la page Planity de l’institut. Faire confirmer les tarifs par Véro de temps en temps.
 - Fournir l’identité légale de l’exploitant et les renseignements nécessaires à ses mentions légales, ainsi que l’identité de l’hébergeur une fois choisi. Ajouter la page correspondante et compléter la confidentialité avec les informations de cet hébergement.
 - Confirmer que les médias fournis peuvent être utilisés publiquement.
 - Écouter la vidéo et fournir une transcription ou des sous-titres si elle comporte des paroles. Le lecteur permet le son, la lecture en ligne sur mobile et le plein écran, sans lecture automatique.
