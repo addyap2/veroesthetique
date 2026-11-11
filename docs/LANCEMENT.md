@@ -37,7 +37,7 @@ the cream page behind it, which never happens on screen. Real contrast is fine.
 
 | # | Item | Why it matters | Severity | Action |
 | --- | --- | --- | --- | --- |
-| A | **Video has sound but no captions or transcript** | Deaf and hard-of-hearing visitors miss it; people watching muted too | High | Get the words from Véro (or listen once), add a WebVTT `<track>` or a short transcript under the video. |
+| A | ~~Video has no captions or transcript~~ | Transcribed locally with Whisper (small model), corrected by context; French captions (`assets/video/vero.fr.vtt`) on by default, plus an on-page transcript | Done | Have someone listen once to confirm "maquillage, mise en beauté" (Whisper heard "remis en beauté"). |
 | B | **Business card spells "Esthêtique"** (ê) | Typo on her printed material; also visible in the share image | Medium | Tell Véro; the site itself uses the correct "Esthétique". Replace `assets/images/partage.jpg` if she gets a corrected file. |
 | C | ~~No address, area or opening hours~~ | Resolved from her Planity page: address, access, parking, hours, full price list, online booking, Instagram, click-to-load Google Maps | Done | Ask Véro to confirm prices periodically (they're copied from Planity). |
 | D | **Legal notice (mentions légales)** | Required in France for a business site | High | Operator identity, SIRET, host (Vercel Inc., address). Add a page and link it in the footer. |
@@ -75,7 +75,7 @@ the cream page behind it, which never happens on screen. Real contrast is fine.
 - [x] Text contrast AA everywhere (see note on the decorative headline copy)
 - [x] Skip link, visible focus, logical heading order, `lang="fr"`
 - [x] Keyboard: menu, FAQ, photo viewer (focus returns), video button
-- [ ] Captions or transcript for the video (open item A)
+- [x] French captions on by default and an on-page transcript for the video
 - [ ] Quick VoiceOver pass on iPhone
 
 **Cross-browser**

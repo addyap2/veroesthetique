@@ -136,7 +136,7 @@ p { text-wrap: pretty; }
 /* ---------- la carte (menu) ---------- */
 .soins { border-top: 1px solid var(--ligne); }
 .soins-tete { margin-bottom: clamp(40px, 6vw, 72px); }
-.soins-tete h2, .vero-texte h2, .institut-tete h2, .faq h2 { font-size: clamp(2.3rem, 4.6vw, 3.8rem); }
+.soins-tete h2, .institut-tete h2, .faq h2 { font-size: clamp(2.3rem, 4.6vw, 3.8rem); }
 .soins-grille { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
 .menu-soins { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(32px, 4vw, 64px); }
 .famille { position: relative; padding: 1.8rem 0 2.2rem; }
@@ -163,25 +163,46 @@ p { text-wrap: pretty; }
 
 /* ---------- Véro: the one blush moment ---------- */
 .vero { background: var(--rose); }
-.vero-grille { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, .56fr); gap: clamp(28px, 4vw, 64px); align-items: end; }
-.vero-portrait { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r); background: var(--blanc); }
-.vero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 28%; }
-.vero-texte { align-self: center; display: grid; gap: 1.1rem; }
-.vero-texte h2 { margin-bottom: .4rem; }
-.vero-texte > p:not(.surtitre) { max-width: 30rem; }
-.signature { margin-top: .6rem; color: var(--doux); font-size: .95rem; }
+.vero-grille { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1fr); grid-template-areas: "film tete" "film texte"; gap: 1.6rem clamp(32px, 6vw, 96px); align-items: start; }
+.vero-tete { grid-area: tete; align-self: end; }
+.vero-tete h2 { font-size: clamp(2.3rem, 4.6vw, 3.8rem); }
+.vero-texte { grid-area: texte; display: grid; gap: 1.1rem; }
+.vero-texte > p { max-width: 32rem; }
+.signature { display: flex; align-items: center; gap: 1rem; margin-top: .8rem; color: var(--doux); font-size: .95rem; }
+.signature p { display: grid; justify-items: start; }
 .signature em { display: inline-block; margin-top: .1rem; font: normal 400 3.2rem/1.1 "Vero Script", var(--titre); padding: 0 .15em .05em 0; background: var(--or-rose); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.signature { display: grid; justify-items: start; }
-.film { margin: 0; }
+.signature-portrait { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: 40% 25%; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--ligne-forte); flex: none; }
+
+/* the film: centrepiece of the Véro section */
+.film { grid-area: film; margin: 0; width: min(100%, 440px); justify-self: center; scroll-margin-top: calc(var(--entete) + 16px); }
 .film-cadre { position: relative; aspect-ratio: 604 / 1074; overflow: hidden; border-radius: var(--r); background: var(--vert); }
 .film-cadre video { width: 100%; height: 100%; object-fit: cover; }
-.film-lecture { position: absolute; inset: 0; display: grid; place-items: center; border: 0; background: linear-gradient(0deg, rgb(34 56 44 / .45), transparent 50%); cursor: pointer; transition: opacity .3s; }
-.film-icone { position: relative; width: 64px; height: 64px; border-radius: 50%; background: rgb(253 250 246 / .92); transition: transform .4s var(--ease); }
-.film-icone::after { content: ""; position: absolute; left: 54%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent var(--vert); }
+.film-cadre video::cue { font-family: var(--corps); font-size: 1rem; line-height: 1.35; background: rgb(20 32 26 / .78); color: #fff; }
+.film-lecture { position: absolute; inset: 0; display: grid; place-content: end center; justify-items: center; gap: .8rem; padding-bottom: 12%; border: 0; background: linear-gradient(0deg, rgb(34 56 44 / .6), transparent 45%); cursor: pointer; transition: opacity .3s; }
+.film-lecture[hidden] { display: none; }
+.film-icone { position: relative; width: 72px; height: 72px; border-radius: 50%; background: rgb(253 250 246 / .94); box-shadow: 0 10px 30px -10px rgb(0 0 0 / .4); transition: transform .4s var(--glisse); }
+.film-icone::after { content: ""; position: absolute; left: 54%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: 9px 0 9px 15px; border-color: transparent transparent transparent var(--vert); }
+.film-invite { padding: .35rem .8rem; border-radius: 999px; background: rgb(253 250 246 / .92); color: var(--vert); font-weight: 600; font-size: .9rem; }
 .film-lecture:hover .film-icone { transform: scale(1.08); }
-.film.est-lancee .film-lecture { opacity: 0; pointer-events: none; }
-.film figcaption { display: flex; justify-content: space-between; gap: 1rem; margin-top: .8rem; font-size: .88rem; color: var(--vert); }
+.film-fin { position: absolute; inset: 0; z-index: 2; display: grid; place-content: center; justify-items: center; gap: 1rem; padding: 1.5rem; text-align: center; background: rgb(34 56 44 / .86); color: #fff; animation: ouvrir .45s var(--glisse); }
+.film-fin[hidden] { display: none; }
+.film-fin p { font: 400 1.6rem/1.2 var(--titre); color: #fff; }
+.film-revoir { margin-top: .4rem; padding: .5rem .9rem; border: 1px solid rgb(255 255 255 / .45); border-radius: var(--r); background: transparent; color: #fff; font: inherit; font-size: .9rem; cursor: pointer; }
+.film-revoir:hover { background: rgb(255 255 255 / .12); }
+.film figcaption { display: flex; justify-content: space-between; gap: 1rem; margin-top: .8rem; font-size: .9rem; color: var(--vert); }
 .film figcaption span { color: var(--doux); font-variant-numeric: tabular-nums; }
+.film-transcription { margin-top: .6rem; font-size: .92rem; }
+.film-transcription summary { cursor: pointer; color: var(--vert); font-weight: 600; text-decoration: underline; text-decoration-color: var(--rose-fonce); text-underline-offset: 3px; width: max-content; }
+.film-transcription p { margin-top: .6rem; color: var(--doux); }
+
+/* hero teaser */
+.hero-film { display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.3rem; color: var(--vert); font-weight: 600; text-decoration: none; }
+.hero-film-icone { position: relative; width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--vert); transition: background-color .25s, transform .3s var(--glisse); }
+.hero-film-icone::after { content: ""; position: absolute; left: 55%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--vert); transition: border-color .25s; }
+.hero-film:hover .hero-film-icone { background: var(--vert); transform: scale(1.06); }
+.hero-film:hover .hero-film-icone::after { border-left-color: #fff; }
+.hero-film-duree { font-weight: 400; color: var(--doux); font-variant-numeric: tabular-nums; }
+.hero-film + .hero-preuve { margin-top: .9rem; }
 
 /* ---------- l'institut ---------- */
 .institut-tete { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem clamp(32px, 5vw, 80px); align-items: end; margin-bottom: clamp(36px, 5vw, 56px); }
@@ -296,10 +317,7 @@ p { text-wrap: pretty; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 1100px) {
-  .vero-grille { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .film { grid-column: 2; max-width: 300px; }
-  .vero-portrait { grid-row: span 2; align-self: start; }
-  .vero-grille { align-items: start; }
+
   .menu { gap: 1.5rem; }
   .entete-appel-label { display: none; }
   .entete-tel { display: none; }
@@ -341,15 +359,16 @@ p { text-wrap: pretty; }
   .hero-texte .surtitre { order: 2; margin-bottom: .8rem; }
   .hero-intro { order: 3; }
   .hero-actions { order: 4; }
+  .hero-film { order: 5; }
+  .hero-preuve { order: 6; }
   .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(34 56 44 / .6), rgb(34 56 44 / 0) 38%); pointer-events: none; }
   .hero-intro { margin-bottom: 1.6rem; }
   .soins-grille, .faq-grille, .institut-tete, .infos-grille { grid-template-columns: 1fr; }
   .maps { aspect-ratio: 4 / 5; }
   .institut-tete p { justify-self: start; }
   .tableau { position: static; }
-  .vero-grille { grid-template-columns: 1fr; }
-  .vero-portrait { grid-row: auto; }
-  .film { grid-column: auto; width: min(100%, 320px); }
+  .vero-grille { grid-template-columns: 1fr; grid-template-areas: "tete" "film" "texte"; }
+  .film { width: min(100%, 360px); }
   .galerie { grid-template-columns: 1fr 1fr; grid-template-rows: none; }
   .galerie-item { aspect-ratio: 4 / 3; }
   .g-cabine { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 1; }

@@ -1,4 +1,5 @@
 import { cp, mkdir, rm, readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -14,6 +15,16 @@ for (const file of ['index.html', 'confidentialite.html', '404.html', 'favicon.i
    SITE_URL wins; on Vercel the production domain is exposed automatically. */
 const brut = process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : '');
 const site = brut.replace(/\/+$/, '');
+
+/* fingerprint CSS/JS so browsers fetch changes at once and cache unchanged files */
+const empreinte = async f => createHash('sha256').update(await readFile(resolve(output, f))).digest('hex').slice(0, 10);
+const versions = { 'styles.css': await empreinte('styles.css'), 'script.js': await empreinte('script.js'), 'assets/video/vero.fr.vtt': await empreinte('assets/video/vero.fr.vtt') };
+for (const page of ['index.html', 'confidentialite.html', '404.html']) {
+  const fichier = resolve(output, page);
+  let html = await readFile(fichier, 'utf8');
+  for (const [f, v] of Object.entries(versions)) html = html.replaceAll(`${f}"`, `${f}?v=${v}"`);
+  await writeFile(fichier, html);
+}
 
 const pages = { 'index.html': '/', 'confidentialite.html': '/confidentialite.html' };
 for (const [page, chemin] of Object.entries(pages)) {
@@ -39,7 +50,19 @@ for (const [page, chemin] of Object.entries(pages)) {
         image: `${site}/assets/images/partage.jpg`,
         logo: `${site}/assets/apple-touch-icon.png`
       };
-      seo += `\n  <meta property="og:image" content="${site}/assets/images/partage.jpg">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <meta property="og:image:alt" content="Carte de visite Véro Esthétique Beauté : 07 82 77 29 46, votre beauté, vos envies, votre moment.">\n  <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+            const video = {
+        '@context': 'https://schema.org',
+        '@type': 'VideoObject',
+        name: 'Bienvenue dans mon univers — Véro Esthétique Beauté',
+        description: 'Véro se présente : esthéticienne à Fréjus depuis plus de trente ans, elle vous accueille sur rendez-vous pour épilations, soins du visage, massages et maquillage.',
+        thumbnailUrl: `${site}/assets/images/video-poster.webp`,
+        uploadDate: '2026-11-11',
+        duration: 'PT24S',
+        contentUrl: `${site}/assets/originals/1000164361.mp4`,
+        inLanguage: 'fr',
+        transcript: 'Bonjour, moi c’est Véro. Avec 30 ans d’expérience professionnelle, j’ai enfin mon espace beauté pour vous accueillir. Besoin d’une épilation, un soin du visage, un massage détente, ou un maquillage, mise en beauté ? Je vous reçois sur rendez-vous, avenue de Lattre de Tassigny. Véro Esthétique Beauté, à très vite !'
+      };
+      seo += `\n  <meta property="og:image" content="${site}/assets/images/partage.jpg">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <meta property="og:image:alt" content="Carte de visite Véro Esthétique Beauté : 07 82 77 29 46, votre beauté, vos envies, votre moment.">\n  <script type="application/ld+json">${JSON.stringify(schema)}</script>\n  <script type="application/ld+json">${JSON.stringify(video)}</script>`;
     }
   }
   html = html.replace('<!-- build:seo -->', seo);

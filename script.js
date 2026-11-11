@@ -123,15 +123,71 @@
     cibles.forEach(c => navObserver.observe(c));
   }
 
-  /* film: custom play button, then native controls */
+  /* film: silent preview loop → full film with sound and captions → end screen with booking */
   const film = document.querySelector('[data-film]');
   if (film) {
     const video = film.querySelector('video');
-    film.querySelector('[data-film-lecture]').addEventListener('click', () => {
-      film.classList.add('est-lancee');
-      video.controls = true;
+    const lecture = film.querySelector('[data-film-lecture]');
+    const fin = film.querySelector('[data-film-fin]');
+    const complet = video.querySelector('source').getAttribute('src');
+    const apercu = video.dataset.apercu;
+    const economie = navigator.connection?.saveData;
+    const sousTitres = () => video.textTracks[0];
+    let mode = 'repos'; // repos → apercu → complet
+
+    video.removeAttribute('controls');
+    lecture.hidden = false;
+
+    const lancerApercu = () => {
+      if (mode !== 'repos' || reduit || economie || !apercu) return;
+      mode = 'apercu';
+      video.muted = true; video.loop = true;
+      video.src = apercu;
+      if (sousTitres()) sousTitres().mode = 'hidden';
       video.play().catch(() => {});
+    };
+
+    const lancerComplet = () => {
+      mode = 'complet';
+      fin.hidden = true;
+      lecture.hidden = true;
+      video.loop = false; video.muted = false;
+      if (video.getAttribute('src') !== complet) video.src = complet;
+      video.controls = true;
+      const montrer = () => { if (sousTitres()) sousTitres().mode = 'showing'; };
+      montrer();
+      video.addEventListener('loadedmetadata', montrer, { once: true });
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    };
+
+    lecture.addEventListener('click', lancerComplet);
+    video.addEventListener('ended', () => {
+      if (mode !== 'complet') return;
+      if (document.fullscreenElement) document.exitFullscreen?.();
+      video.controls = false;
+      if (sousTitres()) sousTitres().mode = 'hidden';
+      fin.hidden = false;
+      fin.querySelector('a')?.focus({ preventScroll: true });
     });
+    film.querySelector('[data-film-revoir]').addEventListener('click', lancerComplet);
+
+    /* hero teaser: jump to the film and start it with sound (the click allows playback) */
+    document.querySelectorAll('[data-film-ouvrir]').forEach(lien => lien.addEventListener('click', e => {
+      e.preventDefault();
+      film.scrollIntoView({ behavior: reduit ? 'auto' : 'smooth', block: 'center' });
+      lancerComplet();
+    }));
+
+    /* preview plays only while visible; everything pauses off-screen */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([entree]) => {
+        if (entree.isIntersecting) {
+          if (mode === 'repos') lancerApercu();
+          else if (mode === 'apercu') video.play().catch(() => {});
+        } else if (!video.paused) video.pause();
+      }, { threshold: 0.35 }).observe(film);
+    }
   }
 
   /* Google Maps: loaded only on request (no third-party request before the click) */
