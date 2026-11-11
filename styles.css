@@ -102,13 +102,18 @@ p { text-wrap: pretty; }
 .menu-bouton { display: none; }
 
 /* ---------- hero: text left, photo bleeding to the edge ---------- */
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); min-height: min(calc(100svh - var(--entete)), 860px); }
+.hero { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); min-height: min(calc(100svh - var(--entete)), 860px); }
 .hero-texte { align-self: center; padding: clamp(48px, 7vw, 96px) clamp(32px, 5vw, 80px) clamp(48px, 7vw, 96px) max(var(--marge), calc((100vw - var(--largeur)) / 2)); }
-.hero h1 { font-size: clamp(2.8rem, 5.2vw, 4.9rem); margin-bottom: 1.6rem; }
-.hero h1 span, .hero h1 em { display: block; }
+.hero-titre { position: relative; font-size: clamp(3rem, 9.4vw, 9.2rem); line-height: .98; letter-spacing: -.03em; margin-bottom: 1.8rem; }
+.hero-titre span span, .hero-titre em { display: block; width: max-content; white-space: nowrap; }
+.titre-papier { position: relative; z-index: 1; display: block; }
+.titre-lumiere { display: none; }
+/* the same words, in light: clipped to the photo by script */
+.js .titre-lumiere { display: block; position: absolute; inset: 0; z-index: 3; pointer-events: none; color: var(--fond); clip-path: inset(0 0 0 100%); }
+.js .titre-lumiere em { color: #f7ddd3; }
 .hero-intro { max-width: 31rem; font-size: clamp(1.05rem, 1.25vw, 1.18rem); color: var(--doux); margin-bottom: 2.4rem; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem 1.8rem; }
-.hero-photo { position: relative; margin: 0; overflow: hidden; background: var(--rose); }
+.hero-photo { position: relative; z-index: 2; margin: 0; overflow: hidden; background: var(--rose); }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 54% 38%; filter: saturate(1.04) contrast(1.02); }
 .hero-photo figcaption { position: absolute; left: 1.4rem; bottom: 1.2rem; padding: .35rem .7rem; background: rgb(253 250 246 / .88); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-size: .82rem; color: var(--vert); border-radius: 2px; }
 
@@ -290,8 +295,12 @@ p { text-wrap: pretty; }
   .hero { grid-template-columns: 1fr; min-height: 0; }
   .hero-photo { order: -1; height: min(46svh, 420px); }
   .hero-photo figcaption { display: none; }
-  .hero-texte { padding: 28px var(--marge) 48px; }
-  .hero h1 { font-size: clamp(2.4rem, 10.5vw, 3.4rem); margin-bottom: 1rem; }
+  .hero-texte { display: flex; flex-direction: column; align-items: flex-start; padding: 0 var(--marge) 48px; }
+  .hero-titre { order: 1; font-size: clamp(2.5rem, 11vw, 3.6rem); margin: -1.02em 0 1.2rem; }
+  .hero-texte .surtitre { order: 2; margin-bottom: .8rem; }
+  .hero-intro { order: 3; }
+  .hero-actions { order: 4; }
+  .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(34 56 44 / .6), rgb(34 56 44 / 0) 38%); pointer-events: none; }
   .hero-intro { margin-bottom: 1.6rem; }
   .soins-grille, .faq-grille, .institut-tete { grid-template-columns: 1fr; }
   .institut-tete p { justify-self: start; }
