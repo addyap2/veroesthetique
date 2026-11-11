@@ -49,9 +49,11 @@ Les fichiers principaux sont :
 | `index.html` | Accueil, soins, tarifs sélectionnés, Véro, galerie, vidéo, FAQ et contact |
 | `confidentialite.html` | Fonctionnement du site et confidentialité |
 | `styles.css` | Couleurs, typographie et mises en page responsive |
-| `script.js` | Menu mobile, visionneuse de photos et année du pied de page |
+| `script.js` | Horloge « Soins en cours », scènes liées au défilement, film, visionneuse de la carte |
 | `assets/images/` | Versions WebP allégées et affiche de la vidéo |
-| `assets/fonts/` | Bodoni Moda et Source Sans 3 auto-hébergées, avec leurs licences OFL |
+| `assets/fonts/` | Fraunces et Source Sans 3 auto-hébergées, avec leurs licences OFL |
+| `assets/images/palme.svg` | Ombre de palme générée pour l’atmosphère lumineuse |
+| `docs/DIRECTION.md` | Direction créative « Soins en cours » : récit, palette, typographie, mouvement |
 | `assets/originals/` | Les huit photos JPG et la vidéo MP4 fournies, conservées sans modification |
 | `assets/originals/manifest.json` | Taille et empreinte SHA-256 de chaque original |
 
@@ -68,4 +70,4 @@ Le dépôt est prêt pour un déploiement technique. Les éléments fournis ne p
 - Écouter la vidéo et fournir une transcription ou des sous-titres si elle comporte des paroles. Le lecteur permet le son, la lecture en ligne sur mobile et le plein écran, sans lecture automatique.
 - Une fois le domaine choisi, ajouter l’URL canonique et une image de partage avec son URL publique absolue. Ces URL ne sont pas devinées.
 
-Le site n’utilise ni traceur, ni cookie, ni stockage local, ni formulaire de collecte. Les polices sont celles de l’appareil et le lecteur vidéo est natif. Si vous ajoutez une mesure d’audience, un formulaire ou un service externe, adaptez les informations de confidentialité au fonctionnement réel.
+Le site n’utilise ni traceur, ni cookie, ni stockage local, ni formulaire de collecte. Les polices sont hébergées avec le site et le lecteur vidéo est natif. Si vous ajoutez une mesure d’audience, un formulaire ou un service externe, adaptez les informations de confidentialité au fonctionnement réel.

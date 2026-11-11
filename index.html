@@ -2,150 +2,244 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#253b30">
-  <meta name="description" content="Véro Esthétique : soins du visage et du corps, épilations, beauté du regard et maquillage. Le monde peut attendre. Rendez-vous au 07 82 77 29 46.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1e3328">
+  <meta name="description" content="Véro Esthétique : soins du visage PHYT’S, escapades corps, épilations, beauté du regard et des mains. Une heure rien qu’à vous. Rendez-vous au 07 82 77 29 46.">
   <meta property="og:title" content="Véro Esthétique — Le monde peut attendre">
-  <meta property="og:description" content="Un soin. Une attention. Un moment qui vous appartient. Contactez Véro au 07 82 77 29 46.">
+  <meta property="og:description" content="Une porte qui s’ouvre, un sourire, et une heure rien qu’à vous. Rendez-vous au 07 82 77 29 46.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <title>Véro Esthétique — Le monde peut attendre</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/bodoni-moda-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/images/cabine-1440.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/images/accueil-1440.webp" as="image" type="image/webp" imagesrcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
-  <div class="page-grain" aria-hidden="true"></div>
-  <header class="site-header" data-header>
-    <div class="header-inner shell">
-      <a class="wordmark" href="#accueil" aria-label="Véro Esthétique, accueil"><span>Véro</span><small>Esthétique</small></a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" hidden><span class="menu-label">Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
-      <nav id="navigation" aria-label="Navigation principale">
-        <a href="#vero">Véro</a><a href="#soins">Les soins</a><a href="#institut">L’institut</a>
-        <a class="nav-book" href="tel:+33782772946">Rendez-vous <span aria-hidden="true">↗</span></a>
-      </nav>
-    </div>
+
+  <header class="bar" data-bar>
+    <a class="wordmark" href="#accueil" aria-label="Véro Esthétique, retour au début"><em>Véro</em><span>Esthétique</span></a>
+    <div class="clock" aria-hidden="true" data-clock>
+    <svg viewBox="0 0 40 40"><circle class="clock-track" cx="20" cy="20" r="18"/><circle class="clock-hand" cx="20" cy="20" r="18" pathLength="60"/></svg>
+    <p><span class="clock-status">Soins en cours</span><span class="clock-time"><b data-clock-min>00</b>&thinsp;min<i> · <span data-clock-chapter>La porte</span></i></span></p>
+  </div>
+    <nav class="bar-nav" aria-label="Navigation principale">
+      <a href="#vero">Véro</a>
+      <a href="#soins">La carte</a>
+      <a href="#contact">Rendez-vous</a>
+    </nav>
+    <a class="bar-call" href="tel:+33782772946"><span class="bar-call-label">Appeler</span> 07&nbsp;82&nbsp;77&nbsp;29&nbsp;46</a>
   </header>
 
+
   <main id="contenu">
-    <section class="hero" id="accueil" aria-labelledby="hero-title">
-      <div class="hero-field shell">
-        <div class="hero-kicker" data-load="1"><span>Véro Esthétique</span><span>Votre moment, à vous</span></div>
-        <h1 id="hero-title" class="hero-title" aria-label="Le monde peut attendre">
-          <span class="title-line"><span data-load="2">Le monde</span></span>
-          <span class="title-line title-line-offset"><em data-load="3">peut attendre.</em></span>
+
+    <!-- 00′ La porte -->
+    <section class="porte" data-tone="dark" id="accueil" data-chapter="La porte" data-minute="0" aria-labelledby="porte-titre">
+      <div class="porte-media">
+        <img class="porte-photo" src="assets/images/accueil-1440.webp" srcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" sizes="100vw" width="1440" height="959" alt="Véro, souriante, ouvre la porte de son institut dans la lumière de fin d’après-midi" fetchpriority="high">
+        <img class="palme palme-porte" src="assets/images/palme.svg" alt="" aria-hidden="true">
+        <span class="porte-veil" aria-hidden="true"></span>
+      </div>
+      <div class="porte-text">
+        <p class="label porte-label" data-in="1">Véro Esthétique<span class="porte-label-suite"> <span aria-hidden="true">—</span> institut de beauté</span></p>
+        <h1 id="porte-titre" class="porte-titre">
+          <span class="ligne" data-in="2">Le monde</span>
+          <span class="ligne ligne-decale" data-in="3"><em>peut attendre.</em></span>
         </h1>
-        <div class="hero-copy" data-load="4">
-          <p>Un soin. Une attention.<br>Un moment qui vous appartient.</p>
-          <div class="hero-actions">
-            <a class="button button-dark" href="tel:+33782772946"><span>Choisir mon moment</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
-            <a class="quiet-link" href="#seuil">Entrer chez Véro <span aria-hidden="true">↓</span></a>
+        <div class="porte-pied" data-in="4">
+          <p>Une porte qui s’ouvre, un sourire,<br>et une heure rien qu’à vous.</p>
+          <a class="appel" href="tel:+33782772946"><span class="appel-texte">Réserver mon heure</span><span class="appel-num">07 82 77 29 46</span></a>
+        </div>
+      </div>
+      <a class="entrer" href="#panneau" data-in="5"><span>Entrer</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <!-- 05′ Le panneau -->
+    <section class="panneau" id="panneau" data-chapter="Le panneau" data-minute="5" data-scene aria-labelledby="panneau-titre">
+      <div class="scene-stage panneau-stage">
+        <ul class="bruit" aria-hidden="true">
+          <li style="--x:9%;--y:16%;--d:0">Les mails non lus.</li>
+          <li style="--x:64%;--y:11%;--d:1">La réunion de 14&nbsp;h.</li>
+          <li style="--x:4%;--y:58%;--d:2">Les courses.</li>
+          <li style="--x:72%;--y:44%;--d:3">Rappeler la banque.</li>
+          <li style="--x:16%;--y:82%;--d:4">Le linge à étendre.</li>
+          <li style="--x:58%;--y:80%;--d:5">Le téléphone qui vibre.</li>
+          <li style="--x:30%;--y:34%;--d:6">Les devoirs.</li>
+          <li style="--x:76%;--y:66%;--d:7">Le trajet du retour.</li>
+        </ul>
+        <figure class="panneau-sign">
+          <img src="assets/images/pause-960.webp" srcset="assets/images/pause-480.webp 480w, assets/images/pause-960.webp 960w, assets/images/pause-1440.webp 1440w" sizes="(max-width: 700px) 120vw, 60vw" width="1440" height="959" alt="Le panneau rond accroché à la porte de l’institut : « Soins en cours, merci de ne pas déranger »" loading="lazy">
+        </figure>
+        <div class="panneau-text">
+          <h2 id="panneau-titre"><span>Soins en cours.</span> <em>Merci de ne pas déranger.</em></h2>
+          <p>Dehors, tout continue.<br>Ici, plus rien ne presse.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12′ La cabine -->
+    <section class="cabine" data-tone="scene" data-chapter="La cabine" data-minute="12" data-scene aria-labelledby="cabine-titre">
+      <div class="scene-stage cabine-stage">
+        <figure class="cabine-frame">
+          <img src="assets/images/cabine-1440.webp" srcset="assets/images/cabine-480.webp 480w, assets/images/cabine-960.webp 960w, assets/images/cabine-1440.webp 1440w" sizes="100vw" width="1440" height="1405" alt="La cabine de soins : murs vert sauge, rideaux verts et voilage blanc, table de soin habillée d’une serviette PHYT’S" loading="lazy">
+        </figure>
+        <h2 id="cabine-titre" class="cabine-titre"><span>Ici,</span> <em>le temps ralentit.</em></h2>
+        <p class="cabine-note label">La cabine <span aria-hidden="true">—</span> vert sauge, lin et lumière douce</p>
+      </div>
+    </section>
+
+    <!-- 20′ Véro -->
+    <section class="vero" id="vero" data-chapter="Véro" data-minute="20" aria-labelledby="vero-titre">
+      <div class="vero-grid">
+        <figure class="vero-portrait" data-focus>
+          <img src="assets/images/vero-portrait-960.webp" srcset="assets/images/vero-portrait-480.webp 480w, assets/images/vero-portrait-960.webp 960w, assets/images/vero-portrait-1440.webp 1440w" sizes="(max-width: 800px) 92vw, 46vw" width="1440" height="1451" alt="Portrait de Véro, souriante, un pinceau de maquillage à la main, devant le mur vert de l’institut" loading="lazy">
+        </figure>
+        <div class="vero-texte">
+          <p class="label" data-focus>La personne</p>
+          <h2 id="vero-titre" data-focus>Avant le soin,<br><em>il y a quelqu’un.</em></h2>
+          <div class="vero-prose" data-focus>
+            <p>Chez Véro Esthétique, la beauté se vit dans les détails&nbsp;: un accueil souriant, une ambiance apaisante, le plaisir de se laisser chouchouter.</p>
+            <p>Vous hésitez entre plusieurs soins&nbsp;? On en parle ensemble, et l’on choisit celui qui vous ressemble.</p>
           </div>
-        </div>
-        <div class="hero-portrait" data-load="5" data-parallax="0.035">
-          <div class="hero-image-mask"><img src="assets/images/cabine-1440.webp" srcset="assets/images/cabine-480.webp 480w, assets/images/cabine-960.webp 960w, assets/images/cabine-1440.webp 1440w" sizes="(max-width: 760px) 91vw, 45vw" width="1536" height="1499" alt="La cabine de soins Véro Esthétique, aux murs verts, avec sa table de soin et sa décoration naturelle" fetchpriority="high"></div>
-          <p><span>01</span> Un lieu pour ralentir</p>
-        </div>
-        <div class="hero-scroll" aria-hidden="true"><span></span> Faites défiler</div>
-      </div>
-    </section>
-
-    <section class="threshold" id="seuil" aria-labelledby="threshold-title">
-      <div class="threshold-sticky">
-        <div class="threshold-copy shell reveal">
-          <p class="eyebrow eyebrow-light">Le seuil</p>
-          <h2 id="threshold-title">Pendant ce temps,<br><em>on prend soin de vous.</em></h2>
-          <p class="threshold-note">À l’extérieur, tout continue.<br>Ici, le rythme change.</p>
-        </div>
-        <div class="doorway" aria-hidden="true">
-          <div class="door-panel door-left"><img src="assets/images/pause-1440.webp" alt=""></div>
-          <div class="door-panel door-right"><img src="assets/images/pause-1440.webp" alt=""></div>
-          <span class="door-line"></span>
-        </div>
-        <p class="sr-only">La pancarte fleurie de l’institut indique : « Soins en cours, merci de ne pas déranger. »</p>
-      </div>
-    </section>
-
-    <section class="meet" id="vero" aria-labelledby="vero-title">
-      <div class="shell meet-grid">
-        <div class="meet-image reveal-image">
-          <img src="assets/images/vero-portrait-1440.webp" srcset="assets/images/vero-portrait-480.webp 480w, assets/images/vero-portrait-960.webp 960w, assets/images/vero-portrait-1440.webp 1440w" sizes="(max-width: 760px) 90vw, 43vw" width="1524" height="1536" alt="Véro vous accueille avec le sourire dans son institut" loading="lazy">
-          <span class="image-index">02 — La rencontre</span>
-        </div>
-        <div class="meet-copy reveal">
-          <p class="eyebrow">La beauté, en personne</p>
-          <h2 id="vero-title">Un sourire.<br>De l’attention.<br><em>Du temps pour vous.</em></h2>
-          <div class="meet-prose"><p>Chez Véro Esthétique, la beauté se vit dans les petits détails&nbsp;: un accueil souriant, une ambiance apaisante et le plaisir de se laisser chouchouter.</p><p>Vous hésitez entre plusieurs prestations&nbsp;? Échangeons sur vos envies pour choisir ensemble le soin qui vous correspond.</p></div>
-          <a class="line-link" href="tel:+33782772946"><span>Échanger avec Véro</span><span aria-hidden="true">↗</span></a>
-          <div class="signature"><span>Au plaisir de vous accueillir,</span><em>Véro</em></div>
+          <p class="signature" data-focus><span>Au plaisir de vous accueillir,</span> <em>Véro</em></p>
         </div>
       </div>
-    </section>
 
-    <section class="treatments" id="soins" aria-labelledby="soins-title">
-      <div class="shell">
-        <div class="treatments-heading reveal">
-          <p class="eyebrow eyebrow-light">La carte des soins</p>
-          <h2 id="soins-title">Qu’aimeriez-vous<br><em>ressentir aujourd’hui&nbsp;?</em></h2>
-          <p>Ouvrez une attention pour la découvrir.</p>
+      <div class="film">
+        <div class="film-texte" data-focus>
+          <p class="label">Le film <span aria-hidden="true">—</span> 0:24</p>
+          <h3>Bienvenue<br><em>dans mon univers.</em></h3>
+          <p>Vingt-quatre secondes à l’institut, en compagnie de Véro. Avec le son, c’est encore mieux.</p>
         </div>
-        <div class="treatment-list">
-          <details class="treatment-row reveal" open><summary><span class="treatment-number">01</span><span class="treatment-name">Visage</span><span class="treatment-promise">Révéler votre éclat</span><span class="treatment-toggle" aria-hidden="true"></span></summary><div class="treatment-content"><p>Les soins visage PHYT’S&nbsp;: Aqua Phyt’s, Multi Vital, Panacée, Sublim’Eyes et le soin à l’aveugle By Véro.</p><a href="tel:+33782772946">Demander conseil <span aria-hidden="true">↗</span></a></div></details>
-          <details class="treatment-row reveal"><summary><span class="treatment-number">02</span><span class="treatment-name">Corps</span><span class="treatment-promise">S’offrir une escapade</span><span class="treatment-toggle" aria-hidden="true"></span></summary><div class="treatment-content"><p>Les escapades sensorielles, pour faire une place à la détente et profiter pleinement de votre moment.</p><a href="tel:+33782772946">Choisir mon moment <span aria-hidden="true">↗</span></a></div></details>
-          <details class="treatment-row reveal"><summary><span class="treatment-number">03</span><span class="treatment-name">Épilations</span><span class="treatment-promise">Tout en douceur</span><span class="treatment-toggle" aria-hidden="true"></span></summary><div class="treatment-content"><p>Visage et corps, création de sourcils, prestations au masculin et forfaits associant plusieurs zones.</p><a href="tel:+33782772946">Prendre rendez-vous <span aria-hidden="true">↗</span></a></div></details>
-          <details class="treatment-row reveal"><summary><span class="treatment-number">04</span><span class="treatment-name">Regard & beauté</span><span class="treatment-promise">Sublimer les détails</span><span class="treatment-toggle" aria-hidden="true"></span></summary><div class="treatment-content"><p>Rehaussement et teinture de cils, teinture des sourcils, maquillage, beauté des mains et des pieds.</p><a href="tel:+33782772946">Parler à Véro <span aria-hidden="true">↗</span></a></div></details>
-        </div>
-        <div class="price-story reveal" id="tarifs">
-          <div class="price-intro"><p class="eyebrow eyebrow-light">Quelques repères</p><h3>La carte,<br><em>en détail.</em></h3><p>Un extrait des tarifs fournis par l’institut. Confirmez votre prestation lors de la prise de rendez-vous.</p></div>
-          <div class="price-list" aria-label="Quelques tarifs de la carte fournie">
-            <div><span>Épilation sourcils</span><span>11 €</span></div><div><span>Épilation lèvre supérieure</span><span>10 €</span></div><div><span>Épilation demi-jambes</span><span>19 €</span></div><div><span>Rehaussement + teinture de cils</span><span>65 €</span></div>
-            <a class="button button-ivory" href="assets/originals/1000164355.jpg" data-lightbox data-title="La carte des soins et des tarifs" data-caption="La carte photographiée à l’institut. Pour connaître un tarif ou choisir un soin, contactez Véro au 07 82 77 29 46."><span>Voir la carte originale</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+        <figure class="psyche" data-focus data-film>
+          <svg class="psyche-defs" width="0" height="0" aria-hidden="true" focusable="false">
+            <defs>
+              <clipPath id="psyche-forme" clipPathUnits="objectBoundingBox"><path d="M0.5,0 C0.81,0 1,0.2 1,0.38 L1,0.94 C1,0.975 0.975,1 0.94,1 L0.06,1 C0.025,1 0,0.975 0,0.94 L0,0.38 C0,0.2 0.19,0 0.5,0 Z"/></clipPath>
+              <linearGradient id="or-rose" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3b9a2"/><stop offset=".45" stop-color="#b98068"/><stop offset=".7" stop-color="#f0d2bf"/><stop offset="1" stop-color="#9c6650"/></linearGradient>
+            </defs>
+          </svg>
+          <div class="psyche-glace">
+            <video playsinline preload="none" poster="assets/images/video-poster.webp" width="604" height="1074" aria-label="Film de présentation : Véro dans son institut">
+              <source src="assets/originals/1000164361.mp4" type="video/mp4">
+              <a href="assets/originals/1000164361.mp4">Télécharger le film de Véro</a>
+            </video>
+            <button class="psyche-play" type="button" data-film-toggle aria-label="Lire le film"><span aria-hidden="true"></span></button>
           </div>
-        </div>
+          <svg class="psyche-cadre" viewBox="0 0 100 178" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path vector-effect="non-scaling-stroke" d="M50,1 C80,1 99,36 99,68 L99,167 C99,173 96,177 90,177 L10,177 C4,177 1,173 1,167 L1,68 C1,36 20,1 50,1 Z"/></svg>
+          <figcaption><span data-film-state>Appuyez pour lire</span><span class="film-progress" aria-hidden="true"><i data-film-progress></i></span></figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="place" id="institut" aria-labelledby="institut-title">
-      <div class="shell place-heading reveal"><p class="eyebrow">L’institut</p><h2 id="institut-title">Une bulle à l’abri<br><em>du reste du monde.</em></h2><p>Des nuances végétales, des matières naturelles et des attentions discrètes.</p></div>
-      <div class="gallery-shell">
-        <a class="gallery-shot gallery-shot-wide reveal-image" href="assets/originals/1000164359.jpg" data-lightbox data-title="Bienvenue chez Véro" data-caption="Véro à la porte de son institut."><img src="assets/images/accueil-1440.webp" srcset="assets/images/accueil-480.webp 480w, assets/images/accueil-960.webp 960w, assets/images/accueil-1440.webp 1440w" sizes="(max-width: 760px) 92vw, 61vw" width="1536" height="1023" alt="Véro ouvre la porte de son institut" loading="lazy"><span><small>01</small> L’accueil</span></a>
-        <a class="gallery-shot gallery-shot-detail reveal-image" href="assets/originals/1000164357.jpg" data-lightbox data-title="La beauté dans les détails" data-caption="Les accessoires de soin de l’institut."><img src="assets/images/details-960.webp" width="1536" height="1023" alt="Serviettes PHYT’S, fleurs blanches et miroir rose sur une table de soin" loading="lazy"><span><small>02</small> Les attentions</span></a>
-        <a class="gallery-shot gallery-shot-room reveal-image" href="assets/originals/1000164358.jpg" data-lightbox data-title="La cabine de soins" data-caption="Un espace calme aux teintes végétales."><img src="assets/images/cabine-960.webp" width="1536" height="1499" alt="La cabine de soins de l’institut" loading="lazy"><span><small>03</small> Votre espace</span></a>
-        <div class="gallery-quote reveal"><p>«&nbsp;Votre beauté,<br>vos envies,<br><em>votre moment.</em>&nbsp;»</p></div>
+    <!-- 30′ La carte -->
+    <section class="carte" data-tone="dark" id="soins" data-chapter="La carte" data-minute="30" aria-labelledby="carte-titre">
+      <header class="carte-tete">
+        <p class="label" data-focus>La carte des soins</p>
+        <h2 id="carte-titre" data-focus>Qu’aimeriez-vous<br><em>ressentir aujourd’hui&nbsp;?</em></h2>
+      </header>
+
+      <div class="soins">
+        <details class="soin" data-focus open>
+          <summary><span class="soin-nom">Visage</span><em class="soin-promesse">révéler votre éclat</em><span class="soin-signe" aria-hidden="true"></span></summary>
+          <div class="soin-corps">
+            <p>Les soins PHYT’S, naturo-esthétiques&nbsp;: Aqua Phyt’s, Multi Vital, Panacée, Sublim’Eyes. Et le soin à l’aveugle <em>By&nbsp;Véro</em>, pour celles et ceux qui préfèrent se laisser surprendre.</p>
+            <p class="soin-prix-note">Tarifs sur la carte de l’institut.</p>
+          </div>
+        </details>
+        <details class="soin" data-focus>
+          <summary><span class="soin-nom">Corps</span><em class="soin-promesse">s’offrir une escapade</em><span class="soin-signe" aria-hidden="true"></span></summary>
+          <div class="soin-corps">
+            <p>Les escapades sensorielles&nbsp;: un temps pour la détente, le corps enfin au repos, l’esprit ailleurs.</p>
+            <p class="soin-prix-note">Tarifs sur la carte de l’institut.</p>
+          </div>
+        </details>
+        <details class="soin" data-focus>
+          <summary><span class="soin-nom">Épilations</span><em class="soin-promesse">tout en douceur</em><span class="soin-signe" aria-hidden="true"></span></summary>
+          <div class="soin-corps">
+            <p>Visage et corps, création de sourcils, prestations au masculin et forfaits associant plusieurs zones.</p>
+            <dl class="tarifs">
+              <div><dt>Sourcils</dt><dd>11&nbsp;€</dd></div>
+              <div><dt>Lèvre supérieure</dt><dd>10&nbsp;€</dd></div>
+              <div><dt>Demi-jambes</dt><dd>19&nbsp;€</dd></div>
+            </dl>
+          </div>
+        </details>
+        <details class="soin" data-focus>
+          <summary><span class="soin-nom">Regard &amp; mains</span><em class="soin-promesse">sublimer les détails</em><span class="soin-signe" aria-hidden="true"></span></summary>
+          <div class="soin-corps">
+            <p>Rehaussement et teinture de cils, teinture des sourcils, maquillage, beauté des mains et des pieds.</p>
+            <dl class="tarifs">
+              <div><dt>Rehaussement + teinture de cils</dt><dd>65&nbsp;€</dd></div>
+            </dl>
+          </div>
+        </details>
+      </div>
+
+      <footer class="carte-pied" data-focus>
+        <p>Quelques tarifs extraits de la carte de l’institut. Pour un soin ou un prix précis, Véro vous répond au téléphone.</p>
+        <a class="lien" href="assets/originals/1000164355.jpg" data-lightbox data-title="La carte des soins" data-caption="La carte photographiée à l’institut. Pour confirmer un soin ou un tarif, appelez Véro au 07 82 77 29 46.">Voir la carte complète <span aria-hidden="true">↗</span></a>
+      </footer>
+    </section>
+
+    <!-- 45′ Les attentions -->
+    <section class="attentions" data-chapter="Les attentions" data-minute="45" aria-labelledby="attentions-titre">
+      <img class="palme palme-lin" src="assets/images/palme.svg" alt="" aria-hidden="true">
+      <figure class="attention-a" data-focus data-drift="-0.06">
+        <img src="assets/images/details-960.webp" srcset="assets/images/details-480.webp 480w, assets/images/details-960.webp 960w, assets/images/details-1440.webp 1440w" sizes="(max-width: 800px) 92vw, 58vw" width="1440" height="959" alt="Serviette PHYT’S grise, fleurs blanches et miroir à main en or rose sur la table de soin" loading="lazy">
+      </figure>
+      <div class="attentions-texte" data-focus>
+        <p class="label">Les attentions</p>
+        <h2 id="attentions-titre">Les petites choses<br><em>qui font tout.</em></h2>
+        <p>Une serviette pliée avec soin, des fleurs blanches, un miroir à main. Et les produits naturo-esthétiques PHYT’S, choisis par Véro.</p>
+      </div>
+      <figure class="attention-b" data-focus data-drift="0.08">
+        <img src="assets/images/phyts-960.webp" srcset="assets/images/phyts-480.webp 480w, assets/images/phyts-960.webp 960w" sizes="(max-width: 800px) 70vw, 30vw" width="1440" height="959" alt="Livret PHYT’S naturo-esthétique posé près d’un vase et d’une boîte rose" loading="lazy">
+      </figure>
+    </section>
+
+    <!-- 55′ Avant de venir -->
+    <section class="questions" data-chapter="Avant de venir" data-minute="55" aria-labelledby="questions-titre">
+      <h2 id="questions-titre" class="questions-titre" data-focus>Avant <em>de venir.</em></h2>
+      <div class="faq">
+        <details data-focus><summary>Comment prendre rendez-vous&nbsp;?</summary><p>Appelez Véro au <a href="tel:+33782772946">07 82 77 29 46</a> ou <a href="sms:+33782772946">envoyez-lui un SMS</a>. Le créneau se décide directement avec elle.</p></details>
+        <details data-focus><summary>Je ne sais pas quel soin choisir.</summary><p>C’est normal. Parcourez <a href="#soins">la carte</a>, puis appelez Véro&nbsp;: vous choisirez ensemble, selon vos envies.</p></details>
+        <details data-focus><summary>Où voir tous les tarifs&nbsp;?</summary><p>Sur <a href="assets/originals/1000164355.jpg" data-lightbox data-title="La carte des soins" data-caption="La carte photographiée à l’institut. Pour confirmer un soin ou un tarif, appelez Véro au 07 82 77 29 46.">la carte complète de l’institut</a>. Pour confirmer un prix, un simple appel suffit.</p></details>
+        <details data-focus><summary>Comment préparer ma venue&nbsp;?</summary><p>En prenant rendez-vous, demandez à Véro l’accès à l’institut et les conseils propres au soin choisi.</p></details>
       </div>
     </section>
 
-    <section class="film-section" aria-labelledby="film-title">
-      <div class="shell film-grid">
-        <div class="film-copy reveal"><p class="eyebrow eyebrow-light">Avant de nous rencontrer</p><h2 id="film-title">Bienvenue<br><em>dans mon univers.</em></h2><p>Un sourire, un lieu, une ambiance. Découvrez Véro dans cette courte vidéo de présentation.</p><span class="film-duration">00:24 — Film de présentation</span></div>
-        <figure class="film reveal-image"><video controls playsinline preload="metadata" poster="assets/images/video-poster.webp" width="604" height="1074" aria-label="Vidéo de présentation de Véro et de l’institut"><source src="assets/originals/1000164361.mp4" type="video/mp4">Votre navigateur ne permet pas de lire cette vidéo. <a href="assets/originals/1000164361.mp4">Télécharger la vidéo de Véro</a>.</video><figcaption><span>Véro Esthétique</span><span>Un petit tour à l’institut</span></figcaption></figure>
+    <!-- 60′ La sortie -->
+    <section class="sortie" data-tone="dark" id="contact" data-chapter="La sortie" data-minute="60" aria-labelledby="sortie-titre">
+      <span class="soleil" aria-hidden="true"></span>
+      <p class="label" data-focus>Soixante minutes plus tard</p>
+      <h2 id="sortie-titre" class="sortie-titre" data-focus>Prenez<br><em>votre heure.</em></h2>
+      <a class="sortie-num" href="tel:+33782772946" data-focus aria-label="Appeler Véro au 07 82 77 29 46"><span>07</span><span>82</span><span>77</span><span>29</span><span>46</span></a>
+      <div class="sortie-actions" data-focus>
+        <a class="appel appel-clair" href="tel:+33782772946"><span class="appel-texte">Appeler Véro</span><span class="appel-num">maintenant</span></a>
+        <a class="lien lien-clair" href="sms:+33782772946">ou lui envoyer un SMS <span aria-hidden="true">↗</span></a>
       </div>
-    </section>
-
-    <section class="visit" aria-labelledby="visit-title">
-      <div class="shell visit-grid">
-        <div class="visit-heading reveal"><p class="eyebrow">Avant votre visite</p><h2 id="visit-title">Quelques mots<br><em>pour vous guider.</em></h2></div>
-        <div class="faq-list">
-          <details class="reveal"><summary>Comment prendre rendez-vous&nbsp;?<span aria-hidden="true"></span></summary><p>Appelez Véro au <a href="tel:+33782772946">07 82 77 29 46</a> ou <a href="sms:+33782772946">envoyez un SMS</a> pour convenir d’un créneau. Le rendez-vous est confirmé directement avec Véro.</p></details>
-          <details class="reveal"><summary>Quel soin choisir&nbsp;?<span aria-hidden="true"></span></summary><p>Parcourez <a href="#soins">les prestations</a>, puis contactez Véro. Vous pourrez échanger sur vos envies et choisir votre prestation ensemble.</p></details>
-          <details class="reveal"><summary>Où trouver les tarifs&nbsp;?<span aria-hidden="true"></span></summary><p>Consultez <a href="assets/originals/1000164355.jpg" data-lightbox data-title="La carte des soins et des tarifs" data-caption="Pour toute précision sur les prestations et leurs tarifs, appelez Véro.">la carte originale de l’institut</a>. Pour confirmer un tarif, appelez le <a href="tel:+33782772946">07 82 77 29 46</a>.</p></details>
-          <details class="reveal"><summary>Comment préparer ma venue&nbsp;?<span aria-hidden="true"></span></summary><p>Lors de votre prise de rendez-vous, demandez à Véro les indications d’accès et les éventuels conseils propres au soin choisi.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="contact-photo" aria-hidden="true"><img src="assets/images/identite-1440.webp" width="1536" height="983" alt=""></div>
-      <div class="shell contact-inner reveal"><p class="eyebrow eyebrow-light">Le prochain moment est le vôtre</p><h2 id="contact-title">Le monde peut attendre.<br><em>Et si on prenait le temps&nbsp;?</em></h2><div class="contact-bottom"><p>Une envie de soin, une question, un rendez-vous.<br>Véro est à votre écoute.</p><a class="contact-phone" href="tel:+33782772946"><span>07 82 77 29 46</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><a class="button button-rose" href="sms:+33782772946"><span>Envoyer un SMS</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div></div>
+      <p class="devise" data-focus>Votre beauté, vos envies, <em>votre moment.</em></p>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="shell footer-top"><a class="wordmark wordmark-footer" href="#accueil" aria-label="Véro Esthétique, retour à l’accueil"><span>Véro</span><small>Esthétique</small></a><p>Votre beauté, vos envies,<br>votre moment.</p><a class="line-link" href="#accueil"><span>Retour en haut</span><span aria-hidden="true">↑</span></a></div><div class="shell footer-bottom"><span>© <span id="year">2026</span> Véro Esthétique</span><a href="confidentialite.html">Confidentialité</a><span>Photos et vidéo originales de l’institut</span></div></footer>
-  <a class="mobile-booking" href="tel:+33782772946"><span>Choisir mon moment</span><span>07 82 77 29 46 <span aria-hidden="true">↗</span></span></a>
-  <dialog id="image-dialog" class="image-dialog" aria-labelledby="image-dialog-title"><div class="dialog-toolbar"><h2 id="image-dialog-title">L’institut en images</h2><button class="dialog-close" type="button" aria-label="Fermer la photo">Fermer <span aria-hidden="true">×</span></button></div><div class="dialog-image-wrap"><img id="dialog-image" alt=""></div><div class="dialog-meta"><p id="dialog-caption"></p><a id="dialog-original" target="_blank" rel="noopener">Ouvrir la photo en grand <span aria-hidden="true">↗</span></a></div></dialog>
+  <footer class="pied" data-tone="dark">
+    <a class="wordmark wordmark-pied" href="#accueil" aria-label="Véro Esthétique, retour au début"><em>Véro</em><span>Esthétique</span></a>
+    <p>© <span id="annee">2026</span> Véro Esthétique</p>
+    <a href="confidentialite.html">Confidentialité</a>
+    <p>Photos et film originaux de l’institut</p>
+  </footer>
+
+  <a class="appel-mobile" href="tel:+33782772946"><span>Réserver mon heure</span><b>07 82 77 29 46</b></a>
+
+  <dialog class="visionneuse" id="visionneuse" aria-labelledby="visionneuse-titre">
+    <div class="visionneuse-tete"><h2 id="visionneuse-titre">La carte des soins</h2><button type="button" class="visionneuse-fermer" data-close>Fermer <span aria-hidden="true">×</span></button></div>
+    <img id="visionneuse-image" src="assets/images/carte-1440.webp" width="1440" height="959" alt="">
+    <div class="visionneuse-pied"><p id="visionneuse-legende"></p><a id="visionneuse-original" href="assets/originals/1000164355.jpg" target="_blank" rel="noopener">Ouvrir en grand <span aria-hidden="true">↗</span></a></div>
+  </dialog>
 </body>
 </html>
