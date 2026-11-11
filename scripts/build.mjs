@@ -7,7 +7,12 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolve(root, 'dist');
 await rm(output, { recursive: true, force: true });
 await mkdir(output);
-for (const file of ['index.html', 'confidentialite.html', '404.html', 'favicon.ico', 'styles.css', 'script.js', 'assets', '.nojekyll']) {
+/* the legal page goes live only once every « À COMPLÉTER » blank is filled */
+const mentionsSource = await readFile(resolve(root, 'mentions-legales.html'), 'utf8');
+const mentionsPretes = !mentionsSource.includes('À COMPLÉTER');
+const fichiers = ['index.html', 'confidentialite.html', '404.html', 'favicon.ico', 'styles.css', 'script.js', 'assets', '.nojekyll'];
+if (mentionsPretes) fichiers.push('mentions-legales.html');
+for (const file of fichiers) {
   await cp(resolve(root, file), resolve(output, file), { recursive: true });
 }
 
@@ -19,14 +24,15 @@ const site = brut.replace(/\/+$/, '');
 /* fingerprint CSS/JS so browsers fetch changes at once and cache unchanged files */
 const empreinte = async f => createHash('sha256').update(await readFile(resolve(output, f))).digest('hex').slice(0, 10);
 const versions = { 'styles.css': await empreinte('styles.css'), 'script.js': await empreinte('script.js'), 'assets/video/vero.fr.vtt': await empreinte('assets/video/vero.fr.vtt') };
-for (const page of ['index.html', 'confidentialite.html', '404.html']) {
+for (const page of ['index.html', 'confidentialite.html', '404.html', ...(mentionsPretes ? ['mentions-legales.html'] : [])]) {
   const fichier = resolve(output, page);
   let html = await readFile(fichier, 'utf8');
+  html = html.replace('<!-- build:mentions -->', mentionsPretes ? ' · <a href="mentions-legales.html">Mentions légales</a>' : '');
   for (const [f, v] of Object.entries(versions)) html = html.replaceAll(`${f}"`, `${f}?v=${v}"`);
   await writeFile(fichier, html);
 }
 
-const pages = { 'index.html': '/', 'confidentialite.html': '/confidentialite.html' };
+const pages = { 'index.html': '/', 'confidentialite.html': '/confidentialite.html', ...(mentionsPretes ? { 'mentions-legales.html': '/mentions-legales.html' } : {}) };
 for (const [page, chemin] of Object.entries(pages)) {
   const fichier = resolve(output, page);
   let html = await readFile(fichier, 'utf8');
@@ -74,4 +80,5 @@ if (site) {
   const urls = Object.values(pages).map(c => `  <url><loc>${site}${c}</loc></url>`).join('\n');
   await writeFile(resolve(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 }
+if (!mentionsPretes) console.warn('Mentions légales : informations « À COMPLÉTER » manquantes, page non publiée.');
 console.log(`Site statique prêt dans dist/${site ? ` pour ${site}` : ' (sans domaine : pas d’URL canonique ni d’image de partage absolue)'}.`);
