@@ -35,21 +35,59 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') fermer(); });
   }
 
-  /* reveal on scroll */
-  const elements = document.querySelectorAll('.revele');
-  if ('IntersectionObserver' in window) {
+  /* ---------- motion system (docs/MOTION.md) ---------- */
+  const reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tous = [...document.querySelectorAll('.revele')];
+  const hero = tous.filter(el => el.closest('.hero'));
+  const reste = tous.filter(el => !el.closest('.hero'));
+  const montrer = (el, delaiMs) => {
+    el.style.setProperty('--d', `${delaiMs / 1000}s`);
+    el.classList.add('est-visible');
+  };
+
+  if (reduit || !('IntersectionObserver' in window)) {
+    tous.forEach(el => el.classList.add('est-visible'));
+  } else {
+    /* loading sequence: wait for the fonts (max 500 ms) so text never jumps */
+    const lancerHero = () => hero.forEach(el => montrer(el, Number(el.dataset.d || 0)));
+    Promise.race([document.fonts?.ready ?? Promise.resolve(), new Promise(r => setTimeout(r, 500))])
+      .then(() => requestAnimationFrame(lancerHero));
+
+    /* scroll reveals: once, ordered top-to-bottom then left-to-right, 80 ms apart, capped at 400 ms */
     const io = new IntersectionObserver(entries => {
       entries.filter(e => e.isIntersecting)
         .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left)
         .forEach((entry, i) => {
-          entry.target.style.setProperty('--d', `${Math.min(i * 0.08, 0.4)}s`);
-          entry.target.classList.add('est-visible');
+          montrer(entry.target, Math.min(i * 80, 400));
           io.unobserve(entry.target);
         });
     }, { rootMargin: '0px 0px -6% 0px' });
-    elements.forEach(el => io.observe(el));
-  } else {
-    elements.forEach(el => el.classList.add('est-visible'));
+    reste.forEach(el => io.observe(el));
+
+    /* light parallax: the photo moves inside its frame, only while on screen */
+    const cadres = [...document.querySelectorAll('[data-parallax]')];
+    const visibles = new Set();
+    let enAttente = false;
+    const parallaxe = () => {
+      enAttente = false;
+      const centre = window.innerHeight / 2;
+      visibles.forEach(el => {
+        const r = el.getBoundingClientRect();
+        const base = parseFloat(getComputedStyle(el).getPropertyValue('--base')) || 1.08;
+        const limite = r.height * (base - 1) / 2 * 0.9; // never travel past the photo's bleed
+        const ecart = Math.max(-limite, Math.min(limite, (r.top + r.height / 2 - centre) * Number(el.dataset.parallax)));
+        const img = el.querySelector('img');
+        if (img) img.style.setProperty('--py', `${ecart.toFixed(1)}px`);
+      });
+    };
+    const demander = () => { if (!enAttente) { enAttente = true; requestAnimationFrame(parallaxe); } };
+    const ioP = new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting ? visibles.add(e.target) : visibles.delete(e.target));
+      demander();
+    });
+    cadres.forEach(el => ioP.observe(el));
+    window.addEventListener('scroll', demander, { passive: true });
+    window.addEventListener('resize', demander);
   }
 
   /* current section in the nav */

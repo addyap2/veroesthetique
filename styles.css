@@ -25,7 +25,21 @@
   --marge: clamp(16px, 4.5vw, 48px);
   --entete: 76px;
   --ease: cubic-bezier(.22, .61, .36, 1);
+
+  /* motion tokens — see docs/MOTION.md */
+  --t-micro: 160ms;
+  --t-court: 280ms;
+  --t-moyen: 560ms;
+  --t-long: 900ms;
+  --glisse: cubic-bezier(.22, 1, .36, 1);
+  --douce: cubic-bezier(.65, 0, .35, 1);
+  --sortie: cubic-bezier(.4, 0, 1, 1);
+  --d-texte: .45em;
+  --d-bloc: 16px;
+  interpolate-size: allow-keywords;
 }
+
+@property --zoom { syntax: "<number>"; inherits: true; initial-value: 1; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--entete) + 8px); -webkit-text-size-adjust: 100%; }
@@ -59,11 +73,12 @@ p { text-wrap: pretty; }
 .btn {
   display: inline-flex; align-items: center; gap: .9rem; min-height: 56px; padding: 0 1.4rem 0 1.5rem;
   background: var(--vert); color: #fff; border-radius: var(--r); text-decoration: none; font-weight: 600; white-space: nowrap;
-  transition: background-color .25s var(--ease);
+  transition: background-color var(--t-court) var(--douce), transform var(--t-micro) var(--glisse);
 }
 .btn:hover { background: #2f4c3c; }
+.btn:active { transform: scale(.98); }
 .btn-num { font-weight: 400; opacity: .72; padding-left: .9rem; border-left: 1px solid rgb(255 255 255 / .25); font-variant-numeric: tabular-nums; }
-.btn-fleche { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; transition: transform .35s var(--ease); }
+.btn-fleche { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; transition: transform var(--t-court) var(--glisse); }
 .btn:hover .btn-fleche { transform: translateX(4px); }
 .btn-clair { background: var(--rose); color: var(--vert); }
 .btn-clair:hover { background: #fff; }
@@ -103,10 +118,13 @@ p { text-wrap: pretty; }
 .soins-tete h2, .vero-texte h2, .institut-tete h2, .faq h2 { font-size: clamp(2.3rem, 4.6vw, 3.8rem); }
 .soins-grille { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
 .menu-soins { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(32px, 4vw, 64px); }
-.famille { padding: 1.8rem 0 2.2rem; border-top: 1px solid var(--ligne-forte); }
+.famille { position: relative; padding: 1.8rem 0 2.2rem; }
+.famille::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--ligne-forte); transform-origin: left; transition: transform var(--t-long) var(--glisse) var(--d, 0s); }
+.js .famille.revele:not(.est-visible)::before { transform: scaleX(0); }
 .famille h3 { font-size: 1.75rem; margin-bottom: 1.1rem; }
 .famille h3 small { display: block; margin-top: .45rem; font: 400 .9rem/1.4 var(--corps); letter-spacing: 0; color: var(--doux); }
-.famille li { padding: .42rem 0; border-bottom: 1px dotted var(--ligne-forte); }
+.famille li { padding: .42rem 0; border-bottom: 1px dotted var(--ligne-forte); transition: color var(--t-micro), border-color var(--t-micro); }
+.famille li:hover { color: var(--vert); border-bottom-color: var(--rose-fonce); }
 .famille li:last-child { border-bottom: 0; }
 .famille li em { font-family: var(--titre); font-style: italic; color: var(--rose-fonce); }
 .famille > p { color: var(--doux); }
@@ -115,8 +133,7 @@ p { text-wrap: pretty; }
 .prix b { font-weight: 600; color: var(--vert); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .tableau { position: sticky; top: calc(var(--entete) + 32px); display: grid; gap: 1.2rem; justify-items: start; }
 .tableau-lien { position: relative; display: block; overflow: hidden; border-radius: var(--r); }
-.tableau-lien img { transition: transform 1.2s var(--ease); }
-.tableau-lien:hover img { transform: scale(1.03); }
+.tableau-lien:hover img { --zoom: 1.035; }
 .tableau-loupe { position: absolute; right: .8rem; bottom: .8rem; padding: .4rem .75rem; background: rgb(253 250 246 / .92); color: var(--vert); font-size: .82rem; font-weight: 600; border-radius: 2px; transition: background-color .25s, color .25s; }
 .tableau-lien:hover .tableau-loupe { background: var(--vert); color: #fff; }
 .tableau p { font-size: .97rem; color: var(--doux); }
@@ -124,7 +141,8 @@ p { text-wrap: pretty; }
 /* ---------- Véro: the one blush moment ---------- */
 .vero { background: var(--rose); }
 .vero-grille { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, .56fr); gap: clamp(28px, 4vw, 64px); align-items: end; }
-.vero-portrait { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 38% 28%; border-radius: var(--r); }
+.vero-portrait { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r); background: var(--blanc); }
+.vero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 28%; }
 .vero-texte { align-self: center; display: grid; gap: 1.1rem; }
 .vero-texte h2 { margin-bottom: .4rem; }
 .vero-texte > p:not(.surtitre) { max-width: 30rem; }
@@ -146,13 +164,13 @@ p { text-wrap: pretty; }
 .institut-tete p { max-width: 30rem; color: var(--doux); justify-self: end; }
 .galerie { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, clamp(200px, 22vw, 290px)); gap: clamp(10px, 1.2vw, 16px); }
 .galerie-item { position: relative; display: block; overflow: hidden; border-radius: var(--r); background: var(--rose); text-decoration: none; }
-.galerie-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-.galerie-item:hover img { transform: scale(1.035); }
-.galerie-item span { position: absolute; left: .8rem; bottom: .8rem; padding: .3rem .65rem; background: rgb(253 250 246 / .92); color: var(--vert); font-size: .82rem; border-radius: 2px; opacity: 0; transform: translateY(6px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+.galerie-item img { width: 100%; height: 100%; object-fit: cover; }
+.galerie-item:hover img { --zoom: 1.035; }
+.galerie-item span { position: absolute; left: .8rem; bottom: .8rem; padding: .3rem .65rem; background: rgb(253 250 246 / .92); color: var(--vert); font-size: .82rem; border-radius: 2px; opacity: 0; transform: translateY(6px); transition: opacity var(--t-court) var(--glisse), transform var(--t-court) var(--glisse); }
 .galerie-item:hover span, .galerie-item:focus-visible span { opacity: 1; transform: none; }
 .g-cabine { grid-column: 1 / span 2; grid-row: 1 / span 2; }
-.g-cabine img { transform: scale(1.14); object-position: 50% 56%; }
-.g-cabine:hover img { transform: scale(1.18); }
+.g-cabine { --base: 1.2; }
+.g-cabine img { object-position: 50% 56%; }
 .g-details { grid-column: 3 / span 2; }
 
 /* ---------- questions ---------- */
@@ -166,7 +184,10 @@ p { text-wrap: pretty; }
 .faq-liste summary::after { transform: rotate(90deg); }
 .faq-liste details[open] summary::after { transform: rotate(0); }
 .faq-liste summary:hover { color: var(--rose-fonce); }
-.faq-liste p { padding: 0 3rem 1.5rem 0; color: var(--doux); max-width: 38rem; }
+.faq-liste p { padding: 0 3rem 1.5rem 0; color: var(--doux); max-width: 38rem; opacity: 0; transform: translateY(-4px); transition: opacity .4s var(--glisse) .08s, transform .5s var(--glisse) .08s; }
+.faq-liste details[open] p { opacity: 1; transform: none; }
+.faq-liste details::details-content { block-size: 0; overflow: hidden; transition: block-size var(--t-moyen) var(--glisse), content-visibility var(--t-moyen) allow-discrete; }
+.faq-liste details[open]::details-content { block-size: auto; }
 .faq-liste a { color: var(--vert); font-weight: 600; text-decoration-color: var(--rose-fonce); text-underline-offset: 3px; }
 
 /* ---------- contact: the one green close ---------- */
@@ -191,14 +212,35 @@ p { text-wrap: pretty; }
 .visionneuse::backdrop { background: rgb(34 56 44 / .82); }
 .visionneuse[open] { animation: ouvrir .35s var(--ease); }
 @keyframes ouvrir { from { opacity: 0; transform: translateY(10px); } }
+.visionneuse[open]::backdrop { animation: fondu .35s var(--glisse); }
+@keyframes fondu { from { opacity: 0; } }
 .visionneuse img { width: 100%; max-height: calc(100vh - 150px); object-fit: contain; }
 .visionneuse p { padding: .8rem .3rem .2rem; color: var(--doux); font-size: .95rem; }
 .visionneuse-fermer { display: block; margin: 0 0 10px auto; padding: .45rem .9rem; border: 1px solid var(--ligne-forte); border-radius: var(--r); background: transparent; font: inherit; font-weight: 600; color: var(--vert); cursor: pointer; }
 .visionneuse-fermer:hover { background: var(--vert); color: #fff; }
 
-/* ---------- gentle staggered reveal ---------- */
-.js .revele { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+/* ---------- motion system: reveals (docs/MOTION.md) ---------- */
+/* photos: translate driven by parallax, scale by --zoom */
+[data-m="image"] img, [data-parallax] img, .tableau-lien img {
+  transform: translate3d(0, var(--py, 0px), 0) scale(calc(var(--zoom) * var(--base, 1)));
+  transition: --zoom 1.2s var(--glisse);
+}
+[data-parallax] { --base: 1.08; }
+
+/* default: fade + rise */
+.js .revele { opacity: 0; transform: translate3d(0, var(--d-bloc), 0); transition: opacity .7s var(--glisse), transform .7s var(--glisse); transition-delay: var(--d, 0s); }
 .js .revele.est-visible { opacity: 1; transform: none; }
+
+/* headings: masked rise, like type being set */
+.js .revele[data-m="texte"] { opacity: 1; transform: translate3d(0, var(--d-texte), 0); clip-path: inset(0 -6% 100% -6%); transition: transform var(--t-long) var(--glisse), clip-path var(--t-long) var(--glisse); transition-delay: var(--d, 0s); }
+.js .revele[data-m="texte"].est-visible { transform: none; clip-path: inset(-12% -6% -24% -6%); }
+
+/* images: curtain lifts, photo settles */
+.js .revele[data-m="image"] { opacity: 1; transform: none; clip-path: inset(100% 0 0 0); transition: clip-path 1.1s var(--glisse); transition-delay: var(--d, 0s); }
+.js .revele[data-m="image"].est-visible { clip-path: inset(0); }
+.js .revele[data-m="image"] img { transition: --zoom 1.4s var(--glisse) var(--d, 0s); }
+.js .revele[data-m="image"]:not(.est-visible) img { --zoom: 1.12; }
+.js .hero-photo.revele:not(.est-visible) { clip-path: inset(0 0 0 100%); }
 
 /* ---------- text pages ---------- */
 .page-texte main { padding: clamp(40px, 8vw, 96px) 0; }
@@ -222,9 +264,16 @@ p { text-wrap: pretty; }
   :root { --entete: 64px; }
   .menu {
     position: absolute; top: var(--entete); left: 0; right: 0; flex-direction: column; gap: 0; margin: 0;
-    padding: .4rem var(--marge) 1.2rem; background: var(--fond); border-bottom: 1px solid var(--ligne); display: none;
+    padding: .4rem var(--marge) 1.2rem; background: var(--fond); border-bottom: 1px solid var(--ligne);
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity var(--t-court) var(--glisse), transform var(--t-court) var(--glisse), visibility 0s linear var(--t-court);
   }
-  .menu.est-ouvert { display: flex; }
+  .menu.est-ouvert { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  .menu a { opacity: 0; transform: translateY(-4px); transition: opacity var(--t-court) var(--glisse), transform var(--t-court) var(--glisse); }
+  .menu.est-ouvert a { opacity: 1; transform: none; }
+  .menu.est-ouvert a:nth-child(2) { transition-delay: 40ms; }
+  .menu.est-ouvert a:nth-child(3) { transition-delay: 80ms; }
+  .menu.est-ouvert a:nth-child(4) { transition-delay: 120ms; }
   .menu a { padding: .95rem 0; border-bottom: 1px solid var(--ligne); font-size: 1.15rem; }
   .menu a::after { display: none; }
   .menu a:last-child { border-bottom: 0; }
@@ -278,5 +327,8 @@ p { text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
-  .js .revele { opacity: 1; transform: none; }
+  .js .revele, .js .revele[data-m] { opacity: 1; transform: none; clip-path: none; }
+  .js .famille.revele::before { transform: none; }
+  [data-m="image"] img, [data-parallax] img, .tableau-lien img { transform: scale(var(--base, 1)); }
+  .faq-liste p { opacity: 1; transform: none; }
 }
