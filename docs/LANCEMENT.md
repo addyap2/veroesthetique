@@ -101,3 +101,7 @@ the cream page behind it, which never happens on screen. Real contrast is fine.
 - [x] `vercel.json`: build command, `dist/` output, headers
 - [ ] After deploy: check headers with `curl -I https://<domain>/`, view source for canonical/og tags, test the share preview (e.g. send the link in WhatsApp)
 - [ ] Custom domain + HTTPS, then redeploy so canonical URLs use it
+
+## Note: Google Maps loads automatically
+
+At the owner's request the map is embedded directly (lazy-loaded near the *Infos pratiques* section) instead of click-to-load. Google may set cookies without prior consent, which the CNIL generally expects for third-party cookies. The privacy and legal pages describe this. To return to click-to-load, restore the version from commit `6156d40`.
