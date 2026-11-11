@@ -1,0 +1,11 @@
+{
+  "name": "vero-esthetique",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine français de Véro Esthétique, avec les photos et la vidéo originales.",
+  "scripts": {
+    "check": "node --check script.js && node scripts/check.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
