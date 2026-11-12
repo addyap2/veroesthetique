@@ -56,7 +56,7 @@ for (const [page, chemin] of Object.entries(pages)) {
         telephone: '+33782772946',
         priceRange: '€€',
         address: { '@type': 'PostalAddress', streetAddress: '608 avenue de Lattre de Tassigny', postalCode: '83600', addressLocality: 'Fréjus', addressCountry: 'FR' },
-        geo: { '@type': 'GeoCoordinates', latitude: 43.4317889, longitude: 6.750117 },
+        geo: { '@type': 'GeoCoordinates', latitude: 43.4319841, longitude: 6.7503973 },
         openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '19:30' }],
         sameAs: ['https://www.planity.com/vero-esthetique-beaute-83600-frejus', 'https://www.instagram.com/veroesthetiquebeaute/', 'https://www.google.com/maps?cid=13179175811885962733', 'https://www.google.com/search?kgmid=/g/11zz9z5z9r'],
         url: `${site}/`,
