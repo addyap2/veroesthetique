@@ -86,8 +86,8 @@ p { text-wrap: pretty; }
 .btn-clair:hover { background: #fff; }
 
 /* ---------- larger tap areas for small text links (no visual change) ---------- */
-.lien, .hero-film, .hero-preuve a, .entete-tel, .faq-liste p a, .infos-liens a, .pied a:not(.logo), .film-transcription summary, .texte p a { position: relative; }
-.lien::after, .hero-film::after, .hero-preuve a::after, .entete-tel::after, .faq-liste p a::after, .pied a:not(.logo)::after, .film-transcription summary::after, .texte p a::after { content: ""; position: absolute; inset: -12px -6px; }
+.lien, .hero-film, .hero-note, .entete-tel, .faq-liste p a, .infos-liens a, .pied a:not(.logo), .film-transcription summary, .texte p a { position: relative; }
+.lien::after, .hero-film::after, .hero-note::after, .entete-tel::after, .faq-liste p a::after, .pied a:not(.logo)::after, .film-transcription summary::after, .texte p a::after { content: ""; position: absolute; inset: -12px -6px; }
 .lien { background-origin: border-box; }
 
 /* ---------- header ---------- */
@@ -120,23 +120,20 @@ p { text-wrap: pretty; }
 .entete-reserver:hover { background: #2f4c3c; border-color: #2f4c3c; }
 
 /* ---------- hero: text left, photo bleeding to the edge ---------- */
-.hero { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); min-height: min(calc(100svh - var(--entete)), 860px); }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: min(calc(100svh - var(--entete)), 860px); }
 .hero-texte { align-self: center; padding: clamp(32px, 5svh, 96px) clamp(32px, 5vw, 80px) clamp(32px, 5svh, 96px) max(var(--marge), calc((100vw - var(--largeur)) / 2)); }
-.hero-titre { position: relative; font-size: clamp(3rem, min(9.4vw, 12.5svh), 9.2rem); line-height: .98; letter-spacing: -.03em; margin-bottom: clamp(1rem, 2.4svh, 1.8rem); }
-.hero-titre span span, .hero-titre em { display: block; width: max-content; white-space: nowrap; }
-.titre-papier { position: relative; z-index: 1; display: block; }
-.titre-lumiere { display: none; }
-/* the same words, in light: clipped to the photo by script */
-.js .titre-lumiere { display: block; position: absolute; inset: 0; z-index: 3; pointer-events: none; color: var(--fond); clip-path: inset(0 0 0 100%); }
-.js .titre-lumiere em { color: #f7ddd3; }
-.hero-intro { max-width: 31rem; font-size: clamp(1.05rem, 1.25vw, 1.18rem); color: var(--doux); margin-bottom: clamp(1.4rem, 3svh, 2.4rem); }
+.hero-titre { position: relative; font-size: clamp(2.8rem, min(6.6vw, 11.5svh), 6.8rem); line-height: .98; letter-spacing: -.03em; margin-bottom: clamp(1rem, 2.4svh, 1.8rem); }
+.hero-titre span, .hero-titre em { display: block; width: max-content; white-space: nowrap; }
+.js .hero-intro { max-width: 31rem; font-size: clamp(1.05rem, 1.25vw, 1.18rem); color: var(--doux); margin-bottom: clamp(1.4rem, 3svh, 2.4rem); }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem 1.8rem; }
-.hero-preuve { margin-top: 1.4rem; font-size: .92rem; color: var(--doux); }
-.hero-preuve .etoiles { color: #b07a3c; letter-spacing: .08em; }
-.hero-preuve b { color: var(--vert); }
+.hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem; margin-top: 1.5rem; font-size: .95rem; color: var(--doux); }
+.hero-meta-sep { color: var(--ligne-forte); }
+.hero-note { color: var(--doux); text-decoration: none; border-bottom: 1px solid var(--ligne-forte); transition: border-color .2s; }
+.hero-note:hover { border-bottom-color: var(--rose-fonce); }
+.hero-note .etoiles { color: #b07a3c; letter-spacing: .08em; }
+.hero-note b { color: var(--vert); }
 .hero-photo { position: relative; z-index: 2; margin: 0; overflow: hidden; background: var(--rose); }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 54% 38%; filter: saturate(1.04) contrast(1.02); }
-.hero-photo figcaption { position: absolute; left: 1.4rem; bottom: 1.2rem; padding: .35rem .7rem; background: rgb(253 250 246 / .88); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-size: .82rem; color: var(--vert); border-radius: 2px; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 66% 34%; filter: saturate(1.04) contrast(1.02); }
 
 /* ---------- offre du mois (auto-hidden after its end date) ---------- */
 .offre { background: var(--vert); color: rgb(255 255 255 / .85); padding: clamp(48px, 7vw, 88px) 0; }
@@ -222,13 +219,12 @@ p { text-wrap: pretty; }
 .film-transcription p { margin-top: .6rem; color: var(--doux); }
 
 /* hero teaser */
-.hero-film { display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.3rem; color: var(--vert); font-weight: 600; text-decoration: none; }
+.hero-film { display: inline-flex; align-items: center; gap: .6rem; color: var(--vert); font-weight: 600; text-decoration: none; }
 .hero-film-icone { position: relative; width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--vert); transition: background-color .25s, transform .3s var(--glisse); }
 .hero-film-icone::after { content: ""; position: absolute; left: 55%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--vert); transition: border-color .25s; }
 .hero-film:hover .hero-film-icone { background: var(--vert); transform: scale(1.06); }
 .hero-film:hover .hero-film-icone::after { border-left-color: #fff; }
 .hero-film-duree { font-weight: 400; color: var(--doux); font-variant-numeric: tabular-nums; }
-.hero-film + .hero-preuve { margin-top: .9rem; }
 
 /* ---------- avis clients ---------- */
 .avis { border-top: 1px solid var(--ligne); }
@@ -253,8 +249,6 @@ p { text-wrap: pretty; }
 .avis-pied { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .8rem 2rem; }
 .avis-glisser { display: none; }
 .avis-grille:focus-visible { outline-offset: 6px; }
-.hero-preuve a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--ligne-forte); transition: border-color .2s; }
-.hero-preuve a:hover { border-bottom-color: var(--rose-fonce); }
 
 /* ---------- citation ---------- */
 .citation { padding: clamp(64px, 9vw, 112px) 0; border-top: 1px solid var(--ligne); }
@@ -457,15 +451,9 @@ p { text-wrap: pretty; }
 
   .hero { grid-template-columns: 1fr; min-height: 0; }
   .hero-photo { order: -1; height: min(46svh, 420px); }
-  .hero-photo figcaption { display: none; }
-  .hero-texte { display: flex; flex-direction: column; align-items: flex-start; padding: 0 var(--marge) 48px; }
-  .hero-titre { order: 1; font-size: clamp(2.5rem, 11vw, 3.6rem); margin: -1.02em 0 1.2rem; }
-  .hero-texte .surtitre { order: 2; margin-bottom: .8rem; }
-  .hero-intro { order: 3; }
-  .hero-actions { order: 4; }
-  .hero-film { order: 5; }
-  .hero-preuve { order: 6; }
-  .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(34 56 44 / .6), rgb(34 56 44 / 0) 38%); pointer-events: none; }
+    .hero-texte { padding: 22px var(--marge) 44px; }
+  .hero-titre { font-size: clamp(2.4rem, 10.6vw, 3.4rem); margin-bottom: 1rem; }
+  .hero-texte .surtitre { margin-bottom: .7rem; }
   .hero-intro { margin-bottom: 1.6rem; }
   .soins-grille, .faq-grille, .institut-tete, .infos-grille, .avis-tete, .offre-grille, .service-tete-grille, .service-grille { grid-template-columns: 1fr; }
   .service-photo { aspect-ratio: 4 / 3; order: -1; }

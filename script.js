@@ -35,23 +35,6 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') fermer(); });
   }
 
-  /* hero: the headline turns to light exactly where it crosses the photo */
-  const lumiere = document.querySelector('[data-titre-lumiere]');
-  const photoHero = document.querySelector('.hero-photo');
-  if (lumiere && photoHero) {
-    const titre = lumiere.parentElement;
-    const couper = () => {
-      const t = titre.getBoundingClientRect();
-      const p = photoHero.getBoundingClientRect();
-      lumiere.style.clipPath = `inset(${(p.top - t.top).toFixed(1)}px ${(t.right - p.right).toFixed(1)}px ${(t.bottom - p.bottom).toFixed(1)}px ${(p.left - t.left).toFixed(1)}px)`;
-    };
-    couper();
-    window.addEventListener('resize', couper);
-    window.addEventListener('load', couper);
-    document.fonts?.ready.then(couper);
-    if ('ResizeObserver' in window) new ResizeObserver(couper).observe(titre);
-  }
-
   /* ---------- motion system (docs/MOTION.md) ---------- */
   const reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const tous = [...document.querySelectorAll('.revele')];
