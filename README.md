@@ -54,6 +54,7 @@ Les fichiers principaux sont :
 | `script.js` | Menu mobile, visionneuse de photos, apparitions au défilement |
 | `assets/images/` | Versions WebP allégées et affiche de la vidéo |
 | `assets/fonts/` | Fraunces, Source Sans 3 et Great Vibes (« Véro » du logo) auto-hébergées et allégées, avec leurs licences OFL |
+| `epilation-frejus.html`, `soin-visage-frejus.html`, `massage-frejus.html`, `rehaussement-cils-maquillage-frejus.html` | Pages par soin pour le référencement local (« soin + Fréjus »), avec tarifs, conseils, un avis client et réservation |
 | `404.html` | Page d’erreur aux couleurs de l’institut |
 | `vercel.json` | Construction, en-têtes de sécurité et de cache |
 | `docs/LANCEMENT.md` | Audit avant mise en ligne et liste de contrôle |

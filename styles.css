@@ -370,6 +370,41 @@ p { text-wrap: pretty; }
 .js .revele[data-m="image"]:not(.est-visible) img { --zoom: 1.12; }
 .js .hero-photo.revele:not(.est-visible) { clip-path: inset(0 0 0 100%); }
 
+/* ---------- service pages ---------- */
+.service-tete { padding: clamp(28px, 5vw, 64px) 0 clamp(40px, 6vw, 80px); background: linear-gradient(180deg, var(--fond), #f8f1ea); border-bottom: 1px solid var(--ligne); }
+.service-tete-grille { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.fil { font-size: .88rem; color: var(--doux); margin-bottom: 1.2rem; }
+.fil a { color: var(--vert); text-decoration: none; border-bottom: 1px solid var(--ligne-forte); }
+.fil a:hover { border-bottom-color: var(--rose-fonce); }
+.service-tete h1 { font-size: clamp(2.6rem, 5.6vw, 4.6rem); margin-bottom: 1.2rem; }
+.service-tete h1 em { display: block; }
+.service-lead { max-width: 36rem; font-size: clamp(1.05rem, 1.3vw, 1.2rem); color: var(--doux); margin-bottom: 1.8rem; }
+.actions-service { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.8rem; }
+.service-photo { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r); }
+.service-corps { padding-top: clamp(56px, 8vw, 96px); }
+.service-grille { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+.service-principal h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); margin-bottom: 1.4rem; }
+.service-principal .service-h2 { margin-top: clamp(40px, 6vw, 64px); }
+.service-note { margin-top: .4rem; font-size: .9rem; color: var(--doux); }
+.bon-a-savoir { display: grid; gap: .8rem; }
+.bon-a-savoir li { position: relative; padding-left: 1.4rem; max-width: 40rem; }
+.bon-a-savoir li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 50%; background: var(--rose-fonce); }
+.bon-a-savoir strong { color: var(--vert); }
+.service-avis { margin-top: clamp(32px, 5vw, 48px); max-width: 40rem; }
+.service-avis figcaption a { color: var(--vert); }
+.service-aside { position: sticky; top: calc(var(--entete) + 24px); }
+.service-carte { display: grid; gap: .8rem; justify-items: start; padding: 1.6rem; border: 1px solid var(--ligne-forte); border-radius: var(--r); background: #fff; }
+.service-carte-titre { font: 400 1.4rem/1.2 var(--titre); color: var(--vert); }
+.service-carte p, .service-carte address { color: var(--doux); font-style: normal; font-size: .97rem; }
+.avis-mini span { color: #b07a3c; letter-spacing: .08em; }
+.service-carte .btn { width: 100%; justify-content: center; margin-top: .4rem; }
+.autres-soins { border-top: 1px solid var(--ligne); padding: clamp(56px, 8vw, 96px) 0; }
+.autres-soins h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom: 1.4rem; }
+.autres-liste { display: flex; flex-wrap: wrap; gap: 1rem 2.4rem; }
+.pied-soins { flex-basis: 100%; order: 3; font-size: .9rem; }
+.pied-soins a, .panneau-lien a { color: var(--vert); }
+.panneau-lien { grid-column: 1 / -1; padding-top: .4rem; display: flex; flex-wrap: wrap; gap: .6rem 2rem; }
+
 /* ---------- text pages ---------- */
 .page-texte main { padding: clamp(40px, 8vw, 96px) 0; }
 .page-texte .entete-inner .btn { margin-left: auto; }
@@ -427,7 +462,9 @@ p { text-wrap: pretty; }
   .hero-preuve { order: 6; }
   .hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(34 56 44 / .6), rgb(34 56 44 / 0) 38%); pointer-events: none; }
   .hero-intro { margin-bottom: 1.6rem; }
-  .soins-grille, .faq-grille, .institut-tete, .infos-grille, .avis-tete, .offre-grille { grid-template-columns: 1fr; }
+  .soins-grille, .faq-grille, .institut-tete, .infos-grille, .avis-tete, .offre-grille, .service-tete-grille, .service-grille { grid-template-columns: 1fr; }
+  .service-photo { aspect-ratio: 4 / 3; order: -1; }
+  .service-aside { position: static; }
   .infos-photo { max-width: 420px; }
   .maps { aspect-ratio: 4 / 5; }
   .institut-tete p { justify-self: start; }

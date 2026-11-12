@@ -5,7 +5,7 @@ import { dirname, resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const pages = ['index.html', 'confidentialite.html', 'mentions-legales.html'];
+const pages = ['index.html', 'confidentialite.html', 'mentions-legales.html', 'epilation-frejus.html', 'soin-visage-frejus.html', 'massage-frejus.html', 'rehaussement-cils-maquillage-frejus.html'];
 const documents = new Map();
 let references = 0;
 

@@ -10,7 +10,14 @@ await mkdir(output);
 /* the legal page goes live only once every « À COMPLÉTER » blank is filled */
 const mentionsSource = await readFile(resolve(root, 'mentions-legales.html'), 'utf8');
 const mentionsPretes = !mentionsSource.includes('À COMPLÉTER');
-const fichiers = ['index.html', 'confidentialite.html', '404.html', 'favicon.ico', 'styles.css', 'script.js', 'assets', '.nojekyll'];
+/* service pages (one per main search: treatment + Fréjus) */
+const services = {
+  'epilation-frejus.html': 'Épilation',
+  'soin-visage-frejus.html': 'Soin du visage',
+  'massage-frejus.html': 'Massage',
+  'rehaussement-cils-maquillage-frejus.html': 'Cils et maquillage'
+};
+const fichiers = ['index.html', 'confidentialite.html', '404.html', ...Object.keys(services), 'favicon.ico', 'styles.css', 'script.js', 'assets', '.nojekyll'];
 if (mentionsPretes) fichiers.push('mentions-legales.html');
 for (const file of fichiers) {
   await cp(resolve(root, file), resolve(output, file), { recursive: true });
@@ -24,7 +31,7 @@ const site = brut.replace(/\/+$/, '');
 /* fingerprint CSS/JS so browsers fetch changes at once and cache unchanged files */
 const empreinte = async f => createHash('sha256').update(await readFile(resolve(output, f))).digest('hex').slice(0, 10);
 const versions = { 'styles.css': await empreinte('styles.css'), 'script.js': await empreinte('script.js'), 'assets/video/vero.fr.vtt': await empreinte('assets/video/vero.fr.vtt') };
-for (const page of ['index.html', 'confidentialite.html', '404.html', ...(mentionsPretes ? ['mentions-legales.html'] : [])]) {
+for (const page of ['index.html', 'confidentialite.html', '404.html', ...Object.keys(services), ...(mentionsPretes ? ['mentions-legales.html'] : [])]) {
   const fichier = resolve(output, page);
   let html = await readFile(fichier, 'utf8');
   html = html.replace('<!-- build:mentions -->', mentionsPretes ? ' · <a href="mentions-legales.html">Mentions légales</a>' : '');
@@ -32,7 +39,7 @@ for (const page of ['index.html', 'confidentialite.html', '404.html', ...(mentio
   await writeFile(fichier, html);
 }
 
-const pages = { 'index.html': '/', 'confidentialite.html': '/confidentialite.html', ...(mentionsPretes ? { 'mentions-legales.html': '/mentions-legales.html' } : {}) };
+const pages = { 'index.html': '/', ...Object.fromEntries(Object.keys(services).map(f => [f, `/${f}`])), 'confidentialite.html': '/confidentialite.html', ...(mentionsPretes ? { 'mentions-legales.html': '/mentions-legales.html' } : {}) };
 for (const [page, chemin] of Object.entries(pages)) {
   const fichier = resolve(output, page);
   let html = await readFile(fichier, 'utf8');
@@ -69,6 +76,14 @@ for (const [page, chemin] of Object.entries(pages)) {
         transcript: 'Bonjour, moi c’est Véro. Avec 30 ans d’expérience professionnelle, j’ai enfin mon espace beauté pour vous accueillir. Besoin d’une épilation, un soin du visage, un massage détente, ou un maquillage, remise en beauté ? Je vous reçois sur rendez-vous, avenue de Lattre de Tassigny. Véro Esthétique Beauté, à très vite !'
       };
       seo += `\n  <meta property="og:image" content="${site}/assets/images/partage.jpg">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <meta property="og:image:alt" content="Carte de visite Véro Esthétique Beauté : 07 82 77 29 46, votre beauté, vos envies, votre moment.">\n  <script type="application/ld+json">${JSON.stringify(schema)}</script>\n  <script type="application/ld+json">${JSON.stringify(video)}</script>`;
+    }
+    if (services[page]) {
+      const fil = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${site}/` },
+        { '@type': 'ListItem', position: 2, name: 'Soins et tarifs', item: `${site}/#soins` },
+        { '@type': 'ListItem', position: 3, name: services[page], item: `${site}${chemin}` }
+      ] };
+      seo += `\n  <meta property="og:image" content="${site}/assets/images/partage.jpg">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <script type="application/ld+json">${JSON.stringify(fil)}</script>`;
     }
   }
   html = html.replace('<!-- build:seo -->', seo);
