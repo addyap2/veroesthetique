@@ -404,6 +404,9 @@ p { text-wrap: pretty; }
 .autres-soins h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom: 1.4rem; }
 .autres-liste { display: flex; flex-wrap: wrap; gap: 1rem 2.4rem; }
 .pied-soins { flex-basis: 100%; order: 3; font-size: .9rem; }
+.pied-credit { flex-basis: 100%; order: 4; font-size: .85rem; color: var(--doux); }
+.pied-credit a { color: var(--vert); }
+.texte .pied-credit { margin-top: 2rem; }
 .pied-soins a, .panneau-lien a { color: var(--vert); }
 .panneau-lien { grid-column: 1 / -1; padding-top: .4rem; display: flex; flex-wrap: wrap; gap: .6rem 2rem; }
 
