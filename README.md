@@ -73,7 +73,7 @@ Le dépôt est prêt pour un déploiement technique. Les éléments fournis ne p
 - L’adresse, l’accès, les horaires, les tarifs et la réservation en ligne proviennent de la page Planity de l’institut. Faire confirmer les tarifs par Véro de temps en temps.
 - Fournir l’identité légale de l’exploitant et les renseignements nécessaires à ses mentions légales, ainsi que l’identité de l’hébergeur une fois choisi. Ajouter la page correspondante et compléter la confidentialité avec les informations de cet hébergement.
 - Confirmer que les médias fournis peuvent être utilisés publiquement.
-- La vidéo est sous-titrée et transcrite. Faire réécouter la phrase « un maquillage, mise en beauté » pour confirmer la transcription.
+- La vidéo est sous-titrée et transcrite (transcription vérifiée à l’écoute).
 - Une fois le domaine choisi, ajouter l’URL canonique et une image de partage avec son URL publique absolue. Ces URL ne sont pas devinées.
 
 Le site n’utilise ni traceur, ni cookie, ni stockage local, ni formulaire de collecte. Les polices sont hébergées avec le site et le lecteur vidéo est natif. Si vous ajoutez une mesure d’audience, un formulaire ou un service externe, adaptez les informations de confidentialité au fonctionnement réel.

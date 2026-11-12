@@ -66,7 +66,7 @@ for (const [page, chemin] of Object.entries(pages)) {
         duration: 'PT24S',
         contentUrl: `${site}/assets/originals/1000164361.mp4`,
         inLanguage: 'fr',
-        transcript: 'Bonjour, moi c’est Véro. Avec 30 ans d’expérience professionnelle, j’ai enfin mon espace beauté pour vous accueillir. Besoin d’une épilation, un soin du visage, un massage détente, ou un maquillage, mise en beauté ? Je vous reçois sur rendez-vous, avenue de Lattre de Tassigny. Véro Esthétique Beauté, à très vite !'
+        transcript: 'Bonjour, moi c’est Véro. Avec 30 ans d’expérience professionnelle, j’ai enfin mon espace beauté pour vous accueillir. Besoin d’une épilation, un soin du visage, un massage détente, ou un maquillage, remise en beauté ? Je vous reçois sur rendez-vous, avenue de Lattre de Tassigny. Véro Esthétique Beauté, à très vite !'
       };
       seo += `\n  <meta property="og:image" content="${site}/assets/images/partage.jpg">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <meta property="og:image:alt" content="Carte de visite Véro Esthétique Beauté : 07 82 77 29 46, votre beauté, vos envies, votre moment.">\n  <script type="application/ld+json">${JSON.stringify(schema)}</script>\n  <script type="application/ld+json">${JSON.stringify(video)}</script>`;
     }
