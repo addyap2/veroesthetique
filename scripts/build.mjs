@@ -30,7 +30,7 @@ const site = brut.replace(/\/+$/, '');
 
 /* fingerprint CSS/JS so browsers fetch changes at once and cache unchanged files */
 const empreinte = async f => createHash('sha256').update(await readFile(resolve(output, f))).digest('hex').slice(0, 10);
-const versions = { 'styles.css': await empreinte('styles.css'), 'script.js': await empreinte('script.js'), 'assets/video/vero.fr.vtt': await empreinte('assets/video/vero.fr.vtt') };
+const versions = { 'styles.css': await empreinte('styles.css'), 'script.js': await empreinte('script.js'), 'assets/video/vero.fr.vtt': await empreinte('assets/video/vero.fr.vtt'), 'assets/video/maquillage-artdeco.fr.vtt': await empreinte('assets/video/maquillage-artdeco.fr.vtt') };
 for (const page of ['index.html', 'confidentialite.html', '404.html', ...Object.keys(services), ...(mentionsPretes ? ['mentions-legales.html'] : [])]) {
   const fichier = resolve(output, page);
   let html = await readFile(fichier, 'utf8');
@@ -83,7 +83,21 @@ for (const [page, chemin] of Object.entries(pages)) {
         { '@type': 'ListItem', position: 2, name: 'Soins et tarifs', item: `${site}/#soins` },
         { '@type': 'ListItem', position: 3, name: services[page], item: `${site}${chemin}` }
       ] };
-      seo += `\n  <meta property="og:image" content="${site}/assets/images/partage.jpg">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <script type="application/ld+json">${JSON.stringify(fil)}</script>`;
+      seo += `\n  <meta property="og:image" content="${site}/assets/images/partage.jpg">\n  <meta property="og:image:width" content="1200">\n  <meta property="og:image:height" content="630">\n  <script type="application/ld+json">${JSON.stringify(fil)}</script>`;      if (page === 'rehaussement-cils-maquillage-frejus.html') {
+        const reel = {
+          '@context': 'https://schema.org',
+          '@type': 'VideoObject',
+          name: 'Le maquillage ARTDECO chez Véro Esthétique Beauté',
+          description: 'Véro présente le maquillage ARTDECO de son institut à Fréjus : blushs en stick, Diamond Stick, crayons longue tenue et waterproof, ombres à paupières crème, rouges à lèvres, mascaras et poudres.',
+          thumbnailUrl: `${site}/assets/images/maquillage-artdeco-poster.webp`,
+          uploadDate: '2026-11-12',
+          duration: 'PT30S',
+          contentUrl: `${site}/assets/video/maquillage-artdeco.mp4`,
+          inLanguage: 'fr',
+          transcript: 'Aujourd’hui, je vous présente mon maquillage ARTDECO, avec des blushs en stick hyper lumineux et le Diamond Stick. Des crayons longue tenue et waterproof, avec de super couleurs. Vous avez des ombres à paupières en crème, des rouges à lèvres, des crayons, mascaras, poudres… ARTDECO, chez Véro Esthétique Beauté.'
+        };
+        seo += `\n  <script type="application/ld+json">${JSON.stringify(reel)}</script>`;
+      }
     }
   }
   html = html.replace('<!-- build:seo -->', seo);

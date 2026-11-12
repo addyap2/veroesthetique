@@ -59,7 +59,7 @@ Les fichiers principaux sont :
 | `vercel.json` | Construction, en-têtes de sécurité et de cache |
 | `docs/LANCEMENT.md` | Audit avant mise en ligne et liste de contrôle |
 | `docs/DIRECTION.md` | Direction visuelle : palette, typographie, principes de mise en page |
-| `assets/originals-ajouts/` | Photos ajoutées en novembre 2026 (cabine lumineuse, entrée, citation) et carte des tarifs officielle (`carte-tarifs.webp`), fichiers d’origine |
+| `assets/originals-ajouts/` | Photos ajoutées en novembre 2026 (cabine lumineuse, entrée, citation), carte des tarifs officielle (`carte-tarifs.webp`) et reel Instagram du maquillage ARTDECO (`reel-maquillage-artdeco.mp4`), fichiers d’origine |
 | `assets/video/` | Sous-titres français (`vero.fr.vtt`, transcrits avec Whisper puis corrigés), aperçu muet de 4 s (`vero-apercu.mp4`) et vidéo de l’offre de novembre (`offre-novembre.mp4`). L’offre s’affiche jusqu’à la date `data-fin` de la section `#offre`, puis disparaît d’elle-même. |
 | `assets/originals/` | Les huit photos JPG et la vidéo MP4 fournies, conservées sans modification |
 | `assets/originals/manifest.json` | Taille et empreinte SHA-256 de chaque original |
