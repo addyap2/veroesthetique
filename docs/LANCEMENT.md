@@ -38,7 +38,7 @@ the cream page behind it, which never happens on screen. Real contrast is fine.
 | # | Item | Why it matters | Severity | Action |
 | --- | --- | --- | --- | --- |
 | A | ~~Video has no captions or transcript~~ | Transcribed locally with Whisper (small model), corrected by context; French captions (`assets/video/vero.fr.vtt`) on by default, plus an on-page transcript | Done | Confirmed by listening: « remise en beauté ». |
-| B | **Business card spells "Esthêtique"** (ê) | Typo on her printed material; also visible in the share image | Medium | Tell Véro; the site itself uses the correct "Esthétique". Replace `assets/images/partage.jpg` if she gets a corrected file. |
+| B | ~~Business card spells "Esthêtique"~~ | Withdrawn: on a close-up the mark is a decorative, leaf-shaped accent on the é, part of the logo design, not a circumflex | — | Nothing to do. |
 | C | ~~No address, area or opening hours~~ | Resolved from her Planity page: address, access, parking, hours, full price list, online booking, Instagram, click-to-load Google Maps | Done | Ask Véro to confirm prices periodically (they're copied from Planity). |
 | D | **Legal notice (mentions légales)**: page written, 7 blanks to fill | Required in France for a business site | High | Fill the « À COMPLÉTER » fields in `mentions-legales.html` (name, legal form, SIRET, e-mail, VAT, publication director, consumer mediator). The build publishes the page and its footer link only once all are filled. |
 | E | **Photo and video rights** | Public use of the provided media | Medium | Written OK from Véro. |
