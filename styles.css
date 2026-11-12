@@ -481,6 +481,13 @@ p { text-wrap: pretty; }
 @media (max-width: 600px) {
   .entete-appel { display: none; }
   .menu-bouton { margin-left: auto; }
+  /* compact booking (or « retour ») button stays in the phone header */
+  .entete-inner { gap: .6rem; }
+  .entete .entete-reserver, .entete .entete-retour { display: inline-flex; align-items: center; min-height: 44px; margin-left: auto; padding: 0 .9rem; font-size: .92rem; }
+  .entete-reserver + .menu-bouton { margin-left: 0; }
+  .menu-bouton, .entete .entete-reserver, .entete .entete-retour { flex: none; white-space: nowrap; }
+  .logo-script { font-size: 2.4rem; }
+  .logo-serif { font-size: .92rem; }
   .panneau-soins { grid-template-columns: 1fr; }
   .onglets { margin-inline: calc(var(--marge) * -1); padding-inline: var(--marge); }
   .onglets { gap: .4rem; }
@@ -504,6 +511,13 @@ p { text-wrap: pretty; }
   .appel-mobile a:first-child { background: var(--vert); color: #fff; }
   .appel-mobile a:last-child { border: 1px solid var(--ligne-forte); color: var(--vert); }
   .appel-mobile.est-visible { transform: none; }
+}
+
+@media (max-width: 360px) {
+  .logo-script { font-size: 2.05rem; }
+  .logo-serif { font-size: .8rem; }
+  .logo-beaute { font-size: .44rem; }
+  .entete .entete-reserver, .entete .entete-retour { padding: 0 .7rem; font-size: .88rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
