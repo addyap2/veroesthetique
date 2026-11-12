@@ -45,11 +45,33 @@ questions → contact band → footer.
 - No trackers, cookies or third-party requests. Fonts are self-hosted.
 - Booking by phone and SMS only.
 
-## Hero (simplified, November 2026)
+## Hero: « De la page à la lumière »
 
-The earlier two-colour "headline crossing into the photo" effect was dropped:
-letters changing colour mid-glyph read as a glitch. The hero is now a calm
-50/50 split: a single-colour headline on the cream side, the sunlit doorway
-photo framed on Véro (less dark interior, her welcoming gesture in frame, no
-caption tag), one booking button with the phone number beside it, and a
-single line « ▶ Rencontrez Véro · ★ 5,0 · 14 avis ».
+**Concept.** The headline is set very large and crosses from the cream page
+into the sunlit doorway photo of Véro. At the photo's edge the letters change
+colour, green on paper and cream on the photo, as if the words step into the
+light with her. One image, one sentence, one call button: the value (a warm,
+personal institute; book Véro directly) lands in the first second.
+
+- **Composition (desktop):** text column left, photo bleeding to the right
+  edge at full height. Lines that are long enough run past the column into
+  the photo; short lines stop before it, so the crossing feels set by hand.
+- **Composition (mobile):** photo first; the first headline line overlaps the
+  bottom of the photo in cream over a soft shade, the rest continues in green
+  below.
+- **Typography:** Fraunces at display size (up to ~7.6rem), tight leading,
+  italic rose for "votre moment."; Source Sans for the subheadline and button.
+- **Imagery and light:** the real photo, with its own late sun and palm
+  shadows. No added effects, no 3D: the light is already in the picture.
+- **Headline:** *Votre beauté, vos envies, votre moment.* (her business-card
+  line). **Subheadline:** what she does, in one sentence. **CTA:** "Appeler
+  Véro | 07 82 77 29 46" plus a quiet SMS link.
+- **Entrance:** photo curtain from the right, then the lines set one by one
+  (both colours move together), then subheadline and button (≈1.1 s).
+- **Interaction and scroll:** light parallax inside the photo; the colour cut
+  is recalculated on resize and font load so it always sits exactly on the
+  photo edge.
+- **Technique:** the headline exists twice: the real heading (green) sits
+  under the photo, and a decorative copy (cream, `aria-hidden`) sits above it,
+  clipped to the photo's rectangle. Screen readers read it once. Without
+  JavaScript, only the green heading shows.
